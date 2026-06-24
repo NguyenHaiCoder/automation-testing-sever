@@ -1,21 +1,22 @@
 # syntax=docker/dockerfile:1
-# Render Web Service — Python API + React static (monorepo)
+# Stage 1 — Build React (Node image có npm)
+FROM node:20-bookworm-slim AS fe-builder
+WORKDIR /fe
+COPY MAIN_AUTOMATION_TEST_FE/package.json MAIN_AUTOMATION_TEST_FE/package-lock.json ./
+RUN npm ci
+COPY MAIN_AUTOMATION_TEST_FE/ ./
+RUN npm run build:web
+
+# Stage 2 — Python API + Playwright (không cần Node runtime)
 FROM mcr.microsoft.com/playwright/python:v1.49.1-jammy
 
 WORKDIR /app
 
-# Python deps (Playwright browsers có sẵn trong image)
 COPY MAIN_AUTOMATION_TEST/requirements-server.txt ./MAIN_AUTOMATION_TEST/
 RUN pip install --no-cache-dir -r MAIN_AUTOMATION_TEST/requirements-server.txt
 
-# Build React dashboard (public mode — khóa sidebar admin)
-COPY MAIN_AUTOMATION_TEST_FE/package.json MAIN_AUTOMATION_TEST_FE/package-lock.json ./MAIN_AUTOMATION_TEST_FE/
-RUN cd MAIN_AUTOMATION_TEST_FE && npm ci
-COPY MAIN_AUTOMATION_TEST_FE/ ./MAIN_AUTOMATION_TEST_FE/
-RUN cd MAIN_AUTOMATION_TEST_FE && npm run build:web
-
-# Backend source + test data
 COPY MAIN_AUTOMATION_TEST/ ./MAIN_AUTOMATION_TEST/
+COPY --from=fe-builder /fe/dist ./MAIN_AUTOMATION_TEST_FE/dist
 
 WORKDIR /app/MAIN_AUTOMATION_TEST
 
