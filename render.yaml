@@ -1,0 +1,35 @@
+# Render Blueprint — 1 Web Service (Docker: API + React + Playwright)
+# Repo: https://github.com/NguyenHaiCoder/automation-testing-sever.git
+services:
+  - type: web
+    name: checklist-automation
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: RESTRICT_ADMIN
+        value: "1"
+      - key: API_HOST
+        value: "0.0.0.0"
+      - key: HEADLESS
+        value: "1"
+      - key: PARALLEL_BROWSERS
+        value: "1"
+      - key: BASE_URL
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: OFFICER_EMAIL
+        sync: false
+      - key: OFFICER_PASSWORD
+        sync: false
+      - key: EMPLOYEE_EMAIL
+        sync: false
+      - key: EMPLOYEE_PASSWORD
+        sync: false

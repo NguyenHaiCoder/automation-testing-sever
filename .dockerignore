@@ -1,0 +1,14 @@
+.git
+.cursor
+**/__pycache__
+**/*.pyc
+**/node_modules
+**/dist
+**/release
+MAIN_AUTOMATION_TEST/log
+MAIN_AUTOMATION_TEST/pack/dist
+MAIN_AUTOMATION_TEST/pack/build
+log-playwright
+accounts.env
+*.xlsx
+login_sheet_dump.txt

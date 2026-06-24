@@ -2,7 +2,9 @@
 
 Monorepo gồm **Python backend** (`MAIN_AUTOMATION_TEST`) và **React dashboard** (`MAIN_AUTOMATION_TEST_FE`).
 
-Repository: https://github.com/NguyenHaiCoder/Automation-testing.git
+Repository: https://github.com/NguyenHaiCoder/automation-testing-sever.git
+
+Deploy cloud: xem **[RENDER_DEPLOY.md](RENDER_DEPLOY.md)** (Render, Docker, 1 Web Service).
 
 ## Cấu trúc
 
