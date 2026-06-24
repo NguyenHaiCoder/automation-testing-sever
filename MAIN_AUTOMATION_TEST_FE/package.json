@@ -1,0 +1,78 @@
+{
+  "name": "checklist-automation-test-fe",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Checklist Nhan su — Desktop tester (Electron)",
+  "author": "H2Q Solution",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:desktop": "cross-env VITE_API_BASE_URL=http://127.0.0.1:8765/api VITE_RESTRICT_ADMIN=false npm run build",
+    "build:web": "cross-env VITE_RESTRICT_ADMIN=true npm run build",
+    "desktop:dev": "concurrently -k -n api,vite,electron -c blue,green,magenta \"npm run desktop:api\" \"vite\" \"wait-on http://127.0.0.1:8765/api/health http://localhost:5173 && electron .\"",
+    "desktop:api": "node electron/start-api.cjs",
+    "desktop:api:exe": "echo Start pack\\\\dist\\\\checklist-backend\\\\checklist-backend.exe api manually",
+    "desktop:build": "npm run build:desktop && electron-builder --win",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.2.5",
+    "antd": "^6.4.5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.h2q.checklist.tester",
+    "productName": "Checklist Tester",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../MAIN_AUTOMATION_TEST/pack/dist/checklist-backend",
+        "to": "backend",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "ChecklistTester-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Checklist Tester",
+      "installerIcon": null,
+      "uninstallerIcon": null
+    }
+  }
+}

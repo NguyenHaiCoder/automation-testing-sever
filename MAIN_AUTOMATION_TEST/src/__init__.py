@@ -1,0 +1,1 @@
+# MAIN_AUTOMATION_TEST package

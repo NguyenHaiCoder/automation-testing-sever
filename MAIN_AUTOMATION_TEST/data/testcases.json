@@ -1,0 +1,4371 @@
+{
+  "moduleCode": "Checklist Nhân sự",
+  "requirement": "Verify module Checklist Nhân sự v2 — redesign từ explore run_23-06-2026_12-53-02 + checklist-ba.md. Chia theo role, ưu tiên luồng nghiệp vụ + BR.",
+  "tester": "HaiNV_TE_FU",
+  "cases": [
+    {
+      "id": "ADM-LST-01",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN truy cập màn danh sách checklist và thấy toàn bộ instance",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Chọn menu [Checklist nhân sự]\n3. Chọn submenu [Checklist]\n4. Truy cập màn hình [Danh sách checklist]",
+      "expected": "1. Màn [Danh sách checklist] hiển thị đầy đủ\n2. ADMIN thấy toàn bộ instance trong hệ thống (BR-10)\n3. Có cột: STT, Nhân viên, Checklist, Từ ngày, Đến ngày, Trạng thái, Tiến độ\n4. Có button [Tạo checklist]",
+      "dependence": "Tài khoản ADMIN hợp lệ",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "rel": "ADM-LST-01/ADM-LST-01_list_page.png",
+          "name": "list page"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "ADMIN — danh sach checklist OK (14 dong)",
+          "images": [
+            {
+              "runId": "run_20260623_140651",
+              "runType": "case-run",
+              "rel": "ADM-LST-01/ADM-LST-01_list_page.png",
+              "name": "list page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADM-LST-02",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN tìm kiếm checklist theo Keyword",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhập [Keyword] vào ô tìm kiếm: test\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Danh sách chỉ hiển thị record khớp Keyword\n2. API GET /api/checklist-assignment/getCheckList trả kết quả đã filter",
+      "dependence": "[ADM-LST-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "rel": "ADM-LST-02/ADM-LST-02_case_result.png",
+          "name": "Kết quả case (fallback)"
+        },
+        {
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "rel": "ADM-LST-02/ADM-LST-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "rel": "ADM-LST-02/ADM-LST-02_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Target page, context or browser has been closed\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_140902",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tim kiem Keyword OK — 10 dong",
+          "images": [
+            {
+              "runId": "run_20260623_140902",
+              "runType": "case-run",
+              "rel": "ADM-LST-02/ADM-LST-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_140902",
+              "runType": "case-run",
+              "rel": "ADM-LST-02/ADM-LST-02_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tim kiem Keyword OK — 10 dong",
+          "images": [
+            {
+              "runId": "run_20260623_153101",
+              "runType": "case-run",
+              "rel": "ADM-LST-02/ADM-LST-02_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260623_153101",
+              "runType": "case-run",
+              "rel": "ADM-LST-02/ADM-LST-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_153101",
+              "runType": "case-run",
+              "rel": "ADM-LST-02/ADM-LST-02_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADM-LST-03",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN lọc checklist theo khoảng ngày",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhấn ô chọn khoảng ngày để mở lịch\n4. Chọn ngày bắt đầu trên lịch\n5. Chọn ngày kết thúc trên lịch\n6. Nhấn button [Tìm kiếm]",
+      "expected": "1. Lịch hiển thị khoảng ngày đã chọn\n2. Danh sách chỉ hiển thị instance trong khoảng FromDate–ToDate",
+      "dependence": "[ADM-LST-01]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_153229",
+          "runType": "case-run",
+          "rel": "ADM-LST-03/ADM-LST-03_calendar_range_selected.png",
+          "name": "Chọn khoảng ngày"
+        },
+        {
+          "runId": "run_20260623_153229",
+          "runType": "case-run",
+          "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
+          "name": "Kết quả lọc theo ngày"
+        },
+        {
+          "runId": "run_20260623_153229",
+          "runType": "case-run",
+          "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
+          "name": "Bảng sau lọc ngày"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_140932",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Loc theo khoang ngay — da submit tim kiem",
+          "images": [
+            {
+              "runId": "run_20260623_140932",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
+              "name": "calendar search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_141553",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.wait_for: Error: strict mode violation: locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") resolved to 2 elements:\n    1) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").first\n    2) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").nth(1)\n\nCall log:\n  - waiting for locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") to be visible\n",
+          "images": [
+            {
+              "runId": "run_20260623_141553",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_pick_start.png",
+              "name": "Chọn ngày bắt đầu"
+            },
+            {
+              "runId": "run_20260623_141553",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_141934",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.wait_for: Error: strict mode violation: locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") resolved to 2 elements:\n    1) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").first\n    2) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").nth(1)\n\nCall log:\n  - waiting for locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") to be visible\n",
+          "images": [
+            {
+              "runId": "run_20260623_141934",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_open.png",
+              "name": "Mở lịch chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260623_141934",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_pick_start.png",
+              "name": "Chọn ngày bắt đầu (01/06)"
+            },
+            {
+              "runId": "run_20260623_141934",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_142122",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.wait_for: Error: strict mode violation: locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") resolved to 2 elements:\n    1) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").first\n    2) <div class=\"ant-picker-cell-inner\">30</div> aka get_by_text(\"30\").nth(1)\n\nCall log:\n  - waiting for locator(\".ant-picker-dropdown .ant-picker-cell[title='2026-06-30'] .ant-picker-cell-inner\") to be visible\n",
+          "images": [
+            {
+              "runId": "run_20260623_142122",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_open.png",
+              "name": "Mở lịch chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260623_142122",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_pick_start.png",
+              "name": "Chọn ngày bắt đầu (01/06)"
+            },
+            {
+              "runId": "run_20260623_142122",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260623_142221",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong co dong nao co Tu ngay/Den ngay trong 01/06/2026–30/06/2026",
+          "images": [
+            {
+              "runId": "run_20260623_142221",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_range_selected.png",
+              "name": "Chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260623_142221",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
+              "name": "Kết quả lọc theo ngày"
+            },
+            {
+              "runId": "run_20260623_142221",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
+              "name": "Bảng sau lọc ngày"
+            }
+          ]
+        },
+        {
+          "runNumber": 7,
+          "runId": "run_20260623_153229",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong co dong nao co Tu ngay/Den ngay trong 01/06/2026–30/06/2026",
+          "images": [
+            {
+              "runId": "run_20260623_153229",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_range_selected.png",
+              "name": "Chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260623_153229",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
+              "name": "Kết quả lọc theo ngày"
+            },
+            {
+              "runId": "run_20260623_153229",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
+              "name": "Bảng sau lọc ngày"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADM-LST-04",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN lọc checklist — Thực hiện cho NV + nhân viên Quyền Phạm Năng",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Mở dropdown [Trạng thái / phạm vi] → chọn [Thực hiện cho NV]\n4. Chọn nhân viên [Quyền Phạm Năng] trong dropdown nhân viên\n5. Quan sát danh sách sau khi lọc",
+      "expected": "1. Dropdown mở và chọn được [Thực hiện cho NV] + [Quyền Phạm Năng]\n2. Danh sách chỉ hiển thị nhân viên Quyền Phạm Năng (không có nhân viên khác)",
+      "dependence": "[ADM-LST-01]",
+      "testData": "Thực hiện cho NV · Quyền Phạm Năng",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "rel": "ADM-LST-04/ADM-LST-04_employee_dropdown_open.png",
+          "name": "Mở dropdown nhân viên"
+        },
+        {
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "rel": "ADM-LST-04/ADM-LST-04_employee_selected.png",
+          "name": "Đã chọn Quyền Phạm Năng"
+        },
+        {
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "rel": "ADM-LST-04/ADM-LST-04_filter_result.png",
+          "name": "Kết quả sau lọc nhân viên"
+        },
+        {
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "rel": "ADM-LST-04/ADM-LST-04_scope_selected.png",
+          "name": "Đã chọn Thực hiện cho NV"
+        },
+        {
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+          "name": "Mở dropdown trạng thái / phạm vi"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_141811",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Dropdown Trang thai mo duoc",
+          "images": [
+            {
+              "runId": "run_20260623_141811",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+              "name": "status dropdown open"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_142741",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Co 14 dong sau loc — can dung 1 nhan vien [Quyền Phạm Năng]",
+          "images": [
+            {
+              "runId": "run_20260623_142741",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_dropdown_open.png",
+              "name": "Mở dropdown nhân viên"
+            },
+            {
+              "runId": "run_20260623_142741",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_selected.png",
+              "name": "Đã chọn Quyền Phạm Năng"
+            },
+            {
+              "runId": "run_20260623_142741",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_filter_result.png",
+              "name": "Kết quả sau lọc nhân viên"
+            },
+            {
+              "runId": "run_20260623_142741",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_scope_selected.png",
+              "name": "Đã chọn Thực hiện cho NV"
+            },
+            {
+              "runId": "run_20260623_142741",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+              "name": "Mở dropdown trạng thái / phạm vi"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_143033",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Bang con 13 dong nhan vien khac — can chi [Quyền Phạm Năng]",
+          "images": [
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_after_filter_apply.png",
+              "name": "Áp dụng bộ lọc"
+            },
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_dropdown_open.png",
+              "name": "Mở dropdown nhân viên"
+            },
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_selected.png",
+              "name": "Đã chọn Quyền Phạm Năng"
+            },
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_filter_result.png",
+              "name": "Kết quả sau lọc nhân viên"
+            },
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_scope_selected.png",
+              "name": "Đã chọn Thực hiện cho NV"
+            },
+            {
+              "runId": "run_20260623_143033",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+              "name": "Mở dropdown trạng thái / phạm vi"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_143239",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Bang con 13 dong nhan vien khac — can chi [Quyền Phạm Năng]",
+          "images": [
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_after_filter_apply.png",
+              "name": "after filter apply"
+            },
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_dropdown_open.png",
+              "name": "Mở dropdown nhân viên"
+            },
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_selected.png",
+              "name": "Đã chọn Quyền Phạm Năng"
+            },
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_filter_result.png",
+              "name": "Kết quả sau lọc nhân viên"
+            },
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_scope_selected.png",
+              "name": "Đã chọn Thực hiện cho NV"
+            },
+            {
+              "runId": "run_20260623_143239",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+              "name": "Mở dropdown trạng thái / phạm vi"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260623_143317",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Bang con 13 dong nhan vien khac — can chi [Quyền Phạm Năng]",
+          "images": [
+            {
+              "runId": "run_20260623_143317",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_dropdown_open.png",
+              "name": "Mở dropdown nhân viên"
+            },
+            {
+              "runId": "run_20260623_143317",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_employee_selected.png",
+              "name": "Đã chọn Quyền Phạm Năng"
+            },
+            {
+              "runId": "run_20260623_143317",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_filter_result.png",
+              "name": "Kết quả sau lọc nhân viên"
+            },
+            {
+              "runId": "run_20260623_143317",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_scope_selected.png",
+              "name": "Đã chọn Thực hiện cho NV"
+            },
+            {
+              "runId": "run_20260623_143317",
+              "runType": "case-run",
+              "rel": "ADM-LST-04/ADM-LST-04_status_dropdown_open.png",
+              "name": "Mở dropdown trạng thái / phạm vi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADM-LST-05",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN làm mới danh sách checklist",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhấn button [Làm mới]",
+      "expected": "1. Danh sách được tải lại từ API\n2. Dữ liệu hiển thị đồng bộ với server",
+      "dependence": "[ADM-LST-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_142548",
+          "runType": "case-run",
+          "rel": "ADM-LST-05/ADM-LST-05_after_refresh.png",
+          "name": "after refresh"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_142548",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Lam moi danh sach OK",
+          "images": [
+            {
+              "runId": "run_20260623_142548",
+              "runType": "case-run",
+              "rel": "ADM-LST-05/ADM-LST-05_after_refresh.png",
+              "name": "after refresh"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADM-LST-06",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "Hiển thị tiến độ doneTaskCount/totalTaskCount trên danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Quan sát cột [Tiến độ] tại dòng có instance đang InProgress",
+      "expected": "1. Cột Tiến độ hiển thị dạng done/total (vd: 0/3, 7/10)\n2. Không hiển thị pendingTaskCount (đã bỏ v2)\n3. progressPercent có thể suy ra từ done/total",
+      "dependence": "[ADM-LST-01]\nInstance có task đã/không confirm",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "BR progress v2 — checklist-ba §7",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_144038",
+          "runType": "case-run",
+          "rel": "ADM-LST-06/ADM-LST-06_progress_column.png",
+          "name": "progress column"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_144027",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_144038",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Cot Tien do hien dang done/total",
+          "images": [
+            {
+              "runId": "run_20260623_144038",
+              "runType": "case-run",
+              "rel": "ADM-LST-06/ADM-LST-06_progress_column.png",
+              "name": "progress column"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Cột [Tiến độ] có ít nhất 1 dòng hiển thị dạng done/total (vd: 0/3, 2/3).",
+      "failCondition": "Không thấy định dạng done/total trong cột Tiến độ."
+    },
+    {
+      "id": "ADM-LST-07",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "ADMIN mở chi tiết checklist từ dòng danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Chọn dòng checklist cần xem\n4. Nhấn vào dòng hoặc thao tác mở chi tiết",
+      "expected": "1. Chuyển sang màn [Chi tiết checklist]\n2. URL dạng /hrm/checklist/{instanceId}\n3. Hiển thị thông tin nhân viên, ngày bắt đầu, tiến độ",
+      "dependence": "[ADM-LST-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_144413",
+          "runType": "case-run",
+          "rel": "ADM-LST-07/ADM-LST-07_detail_from_list.png",
+          "name": "detail from list"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_144027",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_144108",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"tbody tr\").first\n    - locator resolved to <tr aria-hidden=\"true\" class=\"ant-table-measure-row\">…</tr>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+          "images": [
+            {
+              "runId": "run_20260623_144108",
+              "runType": "case-run",
+              "rel": "ADM-LST-07/ADM-LST-07_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_144319",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong co dong de mo chi tiet",
+          "images": []
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_144413",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Mo chi tiet checklist thanh cong",
+          "images": [
+            {
+              "runId": "run_20260623_144413",
+              "runType": "case-run",
+              "rel": "ADM-LST-07/ADM-LST-07_detail_from_list.png",
+              "name": "detail from list"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Bấm dòng danh sách → chuyển màn chi tiết; URL dạng /hrm/checklist/{instanceId}.",
+      "failCondition": "Không có dòng để mở / không mở được chi tiết / URL không phải trang chi tiết."
+    },
+    {
+      "id": "ADM-LST-08",
+      "section": "[ADMIN] Danh sách checklist — /hrm/checklist",
+      "description": "Hiển thị fullName và accountName nhân viên trên danh sách (BR-13)",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Quan sát cột [Nhân viên] tại các dòng có dữ liệu",
+      "expected": "1. Mỗi nhân viên hiển thị 2 dòng: fullName và accountName\n2. fullName = user.FullName; accountName = AccessControlProfileName ?? Username\n3. Không để trống employeeName",
+      "dependence": "[ADM-LST-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "BR-13 — checklist-ba §5.5",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_144735",
+          "runType": "case-run",
+          "rel": "ADM-LST-08/ADM-LST-08_employee_column.png",
+          "name": "Cột Nhân viên — fullName + accountName"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_144027",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.wait_for_timeout: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_144539",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Cot Nhan vien hien fullName + accountName (BR-13)",
+          "images": []
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_144607",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Cot Nhan vien hien fullName + accountName (BR-13)",
+          "images": []
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_144735",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Moi nhan vien co fullName + accountName (13 dong)",
+          "images": [
+            {
+              "runId": "run_20260623_144735",
+              "runType": "case-run",
+              "rel": "ADM-LST-08/ADM-LST-08_employee_column.png",
+              "name": "Cột Nhân viên — fullName + accountName"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Mỗi dòng trong cột [Nhân viên] hiển thị 2 dòng: fullName (dòng 1) + accountName (dòng 2); cả hai không trống (BR-13).",
+      "failCondition": "Có dòng thiếu fullName/accountName hoặc cột Nhân viên chỉ 1 dòng / để trống employeeName."
+    },
+    {
+      "id": "ADM-INS-01",
+      "section": "[ADMIN] Tạo checklist instance — UC-02",
+      "description": "ADMIN tạo checklist — template ngẫu nhiên + NV Nguyễn Việt Hải",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhấn [Tạo checklist]\n4. Chọn template bất kỳ (Active)\n5. Ngày bắt đầu = hôm nay\n6. Cán bộ phụ trách = Quyền Phạm Năng\n7. Nhân viên = Nguyễn Việt Hải\n8. Nhấn [Tạo]\n9. Tìm kiếm [Nguyễn Việt Hải] trên danh sách",
+      "expected": "1. Tạo instance thành công\n2. Danh sách sau tìm chỉ hiển thị nhân viên Nguyễn Việt Hải",
+      "dependence": "[ADM-LST-01]\nTemplate Active, nhân viên chưa có instance trùng (BR-06)",
+      "testData": "CB: Quyền Phạm Năng · NV: Nguyễn Việt Hải · Ngày bắt đầu: hôm nay",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "UC-02, BR-12",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "rel": "ADM-INS-01/ADM-INS-01_verify_create_list.png",
+          "name": "Kiểm tra danh sách sau tạo"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_144027",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_145255",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.wait_for: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\".ant-select-item-option-content\").first to be visible\n    19 × locator resolved to hidden <div class=\"ant-select-item-option-content\">Tuyển dụng ngày 22/6</div>\n",
+          "images": [
+            {
+              "runId": "run_20260623_145255",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_145255",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_150017",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\".ant-modal\").filter(has_text=\"Tạo checklist\").locator(\".ant-select\").nth(1)\n",
+          "images": [
+            {
+              "runId": "run_20260623_150017",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_150017",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_150125",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong dien duoc form Tao checklist — CB [Quyền Phạm Năng], NV [Nguyễn Việt Hải]",
+          "images": [
+            {
+              "runId": "run_20260623_150125",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260623_150212",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong dien duoc form Tao checklist — CB [Quyền Phạm Năng], NV [Nguyễn Việt Hải]",
+          "images": [
+            {
+              "runId": "run_20260623_150212",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            }
+          ]
+        },
+        {
+          "runNumber": 7,
+          "runId": "run_20260623_150351",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tao checklist thanh cong — danh sach chi co [Nguyễn Việt Hải]",
+          "images": [
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_150351",
+              "runType": "case-run",
+              "rel": "ADM-INS-01/ADM-INS-01_verify_create_list.png",
+              "name": "Kiểm tra danh sách sau tạo"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Tạo checklist xong → tìm [Nguyễn Việt Hải] trên danh sách → bảng chỉ hiển thị nhân viên đó (≥1 dòng).",
+      "failCondition": "Không tạo được / báo trùng BR-06 / sau tìm không có dòng / có nhân viên khác ngoài Nguyễn Việt Hải."
+    },
+    {
+      "id": "ADM-INS-02",
+      "section": "[ADMIN] Tạo checklist instance — UC-02",
+      "description": "Verify danh sách sau tạo — tìm Nguyễn Việt Hải (kết quả ADM-INS-01)",
+      "procedure": "1. Đã hoàn tất [ADM-INS-01]\n2. Truy cập màn hình [Danh sách checklist]\n3. Tìm kiếm [Nguyễn Việt Hải]\n4. Quan sát kết quả bảng",
+      "expected": "1. Danh sách sau tìm chỉ hiển thị nhân viên Nguyễn Việt Hải (≥1 dòng)",
+      "dependence": "[ADM-INS-01]",
+      "testData": "Keyword: Nguyễn Việt Hải",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Verify create → list",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "rel": "ADM-INS-02/ADM-INS-02_error.png",
+          "name": "Lỗi trong quá trình chạy"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_144027",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_150635",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tao checklist thanh cong — danh sach chi co [Nguyễn Việt Hải]",
+          "images": [
+            {
+              "runId": "run_20260623_150635",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_150635",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_150635",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
+              "name": "Kiểm tra danh sách sau tạo"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_153101",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": [
+            {
+              "runId": "run_20260623_153101",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Tìm [Nguyễn Việt Hải] trên danh sách → bảng chỉ hiển thị nhân viên đó (≥1 dòng) — kết quả sau ADM-INS-01.",
+      "failCondition": "Không có dòng / có nhân viên khác — cần chạy ADM-INS-01 trước hoặc dữ liệu chưa đồng bộ."
+    },
+    {
+      "id": "ADM-INS-03",
+      "section": "[ADMIN] Tạo checklist instance — BR-06",
+      "description": "Không tạo duplicate instance cùng Template + Employee đang active",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhấn button [Tạo checklist]\n4. Chọn cùng template và nhân viên [Nguyễn Việt Hải] đã có instance active (sau ADM-INS-01)\n5. Nhấn button [Tạo/Lưu]",
+      "expected": "1. Hệ thống báo lỗi validate — không tạo duplicate (BR-06)\n2. Không sinh instance mới",
+      "dependence": "[ADM-INS-01]",
+      "testData": "Template + NV: lấy từ instance ADM-INS-01 (Nguyễn Việt Hải)",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "BR-06",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_duplicate_attempt.png",
+          "name": "duplicate attempt"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_duplicate_toast_bug.png",
+          "name": "FE sai toast — báo thành công dù BR-06 chặn"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "rel": "ADM-INS-03/ADM-INS-03_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_150947",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "He thong van tao duplicate — template [Sinh viên thực tập] + NV [Nguyễn Việt Hải]",
+          "images": [
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_duplicate_attempt.png",
+              "name": "duplicate attempt"
+            },
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_150947",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_151439",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong thay thong bao chan duplicate BR-06 — can review",
+          "images": [
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_duplicate_attempt.png",
+              "name": "duplicate attempt"
+            },
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_151439",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_152049",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE sai toast — hien [Tao thanh cong] du BR-06 chan (0 instance moi, so dong khong doi)",
+          "images": [
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_duplicate_attempt.png",
+              "name": "duplicate attempt"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_duplicate_toast_bug.png",
+              "name": "FE sai toast — báo thành công dù BR-06 chặn"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_152049",
+              "runType": "case-run",
+              "rel": "ADM-INS-03/ADM-INS-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "BR-06 chặn (số dòng không đổi) + toast/modal có [Trùng] hoặc [đã có] — không được hiện [Tạo thành công].",
+      "failCondition": "Vẫn tạo instance mới / hoặc FE sai toast (báo thành công dù BR-06 chặn) / thiếu thông báo Trùng–đã có."
+    },
+    {
+      "id": "ADM-DTL-01",
+      "section": "[ADMIN] Chi tiết checklist — /hrm/checklist/:id",
+      "description": "Tiến độ chi tiết sau NV xác nhận task (FE count)",
+      "procedure": "1. ADMIN tạo template mới (automationtestver{N}, 3 mục)\n2. ADMIN tạo checklist — CB [Quyền Phạm Năng], NV [TK Chuyên viên]\n3. EMPLOYEE mở chi tiết → bấm hết [Đúng hạn]\n4. ADMIN mở lại chi tiết instance có task đã confirm → kiểm tra done/total",
+      "expected": "1. NV đã xác nhận hết → tiến độ chi tiết phải đúng N/N (3 mục → 3/3)\n2. Count 0/N sau khi NV confirm = Fail (FE chưa cập nhật)",
+      "dependence": "[ADM-LST-07]",
+      "testData": "Template/mục: automationtestver{N} · NV: TK Chuyên viên · CB: Quyền Phạm Năng",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+          "name": "after confirm"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_1.png",
+          "name": "confirm modal 1"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_2.png",
+          "name": "confirm modal 2"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_3.png",
+          "name": "confirm modal 3"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_detail_opened.png",
+          "name": "Mở chi tiết checklist"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+          "name": "Chi tiết — tiến độ done/total"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+          "name": "emp after confirm"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+          "name": "EMPLOYEE xác nhận hết Đúng hạn"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+          "name": "Form tạo template"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+          "name": "Kết quả tạo template"
+        },
+        {
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_154758",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": [
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            },
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "template create form"
+            },
+            {
+              "runId": "run_20260623_154758",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "template create result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_155001",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": [
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            },
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_155001",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_155541",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Tien do sai — can 3/3, hien 23/6",
+          "images": [
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "emp confirm all"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_155541",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260623_155806",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "unindent does not match any outer indentation level (adm_dtl_01.py, line 132)",
+          "images": [
+            {
+              "runId": "run_20260623_155806",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260623_155823",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE chua cap nhat count — NV da xac nhan het 3 task nhung tien do van 0/3",
+          "images": [
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "EMPLOYEE xác nhận hết Đúng hạn"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_155823",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 7,
+          "runId": "run_20260623_160619",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE chua cap nhat count — NV da xac nhan het 3 task nhung tien do van 0/3",
+          "images": [
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_1.png",
+              "name": "confirm modal 1"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_2.png",
+              "name": "confirm modal 2"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_3.png",
+              "name": "confirm modal 3"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "EMPLOYEE xác nhận hết Đúng hạn"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_160619",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 8,
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE chua cap nhat count — NV da xac nhan het 3 task nhung tien do van 0/3",
+          "images": [
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_1.png",
+              "name": "confirm modal 1"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_2.png",
+              "name": "confirm modal 2"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_3.png",
+              "name": "confirm modal 3"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "EMPLOYEE xác nhận hết Đúng hạn"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 9,
+          "runId": "run_20260623_163723",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE chua cap nhat count — NV da xac nhan het 3 task nhung tien do van 0/3",
+          "images": [
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_1.png",
+              "name": "confirm modal 1"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_2.png",
+              "name": "confirm modal 2"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_3.png",
+              "name": "confirm modal 3"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "EMPLOYEE xác nhận hết Đúng hạn"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_163723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 10,
+          "runId": "run_20260623_164421",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "FE chua cap nhat count — NV da xac nhan het 3 task nhung tien do van 0/3",
+          "images": [
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_1.png",
+              "name": "confirm modal 1"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_2.png",
+              "name": "confirm modal 2"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_confirm_modal_3.png",
+              "name": "confirm modal 3"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_detail_progress.png",
+              "name": "Chi tiết — tiến độ done/total"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_after_confirm.png",
+              "name": "emp after confirm"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_emp_confirm_all.png",
+              "name": "EMPLOYEE xác nhận hết Đúng hạn"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_164421",
+              "runType": "case-run",
+              "rel": "ADM-DTL-01/ADM-DTL-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        }
+      ],
+      "passCondition": "NV xác nhận hết task → ADMIN chi tiết hiển thị đúng N/N (3 mục template → 3/3).",
+      "failCondition": "Count vẫn 0/N hoặc khác N/N sau khi NV confirm hết / không hoàn tất luồng tạo–logout–confirm."
+    },
+    {
+      "id": "ADM-DTL-02",
+      "section": "[ADMIN] Chi tiết checklist — /hrm/checklist/:id",
+      "description": "ADMIN xem nhật ký thay đổi checklist",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Chi tiết checklist] có log\n3. Nhấn button [Nhật ký]",
+      "expected": "1. Modal/panel nhật ký hiển thị\n2. Có action, actorFullName, actorAccountName, thời gian\n3. Dữ liệu read-only từ checklist_log",
+      "dependence": "[ADM-DTL-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-02/ADM-DTL-02_detail_opened.png",
+          "name": "Mở chi tiết checklist"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-02/ADM-DTL-02_journal_modal.png",
+          "name": "Modal nhật ký checklist"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-02/ADM-DTL-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-02/ADM-DTL-02_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_161454",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong mo duoc modal Nhat ky",
+          "images": [
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_journal_modal.png",
+              "name": "Modal nhật ký checklist"
+            },
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Nhat ky co 5 dong log voi ngay gio",
+          "images": [
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_journal_modal.png",
+              "name": "Modal nhật ký checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-02/ADM-DTL-02_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Nút [Nhật ký] mở được modal/panel nhật ký thay đổi.",
+      "failCondition": "Không mở được chi tiết / không mở được Nhật ký."
+    },
+    {
+      "id": "ADM-DTL-03",
+      "section": "[ADMIN] Chi tiết checklist — BR-07 UC-06",
+      "description": "ADMIN hủy checklist instance (bắt buộc lý do)",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Chi tiết checklist] Status ≠ Cancelled\n3. Nhấn button [Hủy checklist]\n4. Nhập [Lý do hủy]: automationtestver{N}\n5. Nhấn button [Xác nhận] trên modal",
+      "expected": "1. Instance chuyển Status = Cancelled (BR-07)\n2. CancelReason được lưu\n3. Notify OFFICER + EMPLOYEE liên quan",
+      "dependence": "[ADM-DTL-01]\nInstance có thể hủy",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "UC-06, BR-07",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_after_cancel.png",
+          "name": "Sau xác nhận hủy checklist"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_cancel_confirm_click.png",
+          "name": "Bấm xác nhận hủy trên modal"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_cancel_error_toast.png",
+          "name": "Toast lỗi hủy checklist"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_cancel_modal.png",
+          "name": "Modal hủy checklist"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_detail_opened.png",
+          "name": "Mở chi tiết checklist"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "rel": "ADM-DTL-03/ADM-DTL-03_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_161454",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": [
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Huy checklist khong co toast loi — flow hoan tat",
+          "images": [
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_after_cancel.png",
+              "name": "Sau xác nhận hủy checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_cancel_modal.png",
+              "name": "Modal hủy checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_163134",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Toast loi khi huy checklist: [Có lỗi xảy ra khi hủy checklist]",
+          "images": [
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_after_cancel.png",
+              "name": "Sau xác nhận hủy checklist"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_cancel_confirm_click.png",
+              "name": "Bấm xác nhận hủy trên modal"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_cancel_error_toast.png",
+              "name": "Toast lỗi hủy checklist"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_cancel_modal.png",
+              "name": "Modal hủy checklist"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_163134",
+              "runType": "case-run",
+              "rel": "ADM-DTL-03/ADM-DTL-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Flow [Hủy checklist] → nhập lý do automationtestver{N} → Xác nhận hoàn tất (BR-07).",
+      "failCondition": "Không thấy nút Hủy / không mở được chi tiết / không xác nhận được modal."
+    },
+    {
+      "id": "ADM-DTL-04",
+      "section": "[ADMIN] Chi tiết checklist — /hrm/checklist/:id",
+      "description": "ADMIN quay lại danh sách từ chi tiết",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Chi tiết checklist]\n3. Nhấn button [Quay lại]",
+      "expected": "1. Quay về màn [Danh sách checklist]\n2. Danh sách hiển thị bình thường",
+      "dependence": "[ADM-DTL-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-04/ADM-DTL-04_after_quay_lai.png",
+          "name": "Sau Quay lại danh sách"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-04/ADM-DTL-04_detail_before_back.png",
+          "name": "Chi tiết trước khi Quay lại"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-04/ADM-DTL-04_detail_opened.png",
+          "name": "Mở chi tiết checklist"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-04/ADM-DTL-04_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "rel": "ADM-DTL-04/ADM-DTL-04_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_161454",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Locator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+          "images": [
+            {
+              "runId": "run_20260623_161454",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_161723",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Quay lai danh sach checklist thanh cong",
+          "images": [
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_after_quay_lai.png",
+              "name": "Sau Quay lại danh sách"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_detail_before_back.png",
+              "name": "Chi tiết trước khi Quay lại"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_161723",
+              "runType": "case-run",
+              "rel": "ADM-DTL-04/ADM-DTL-04_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Nút [Quay lại] từ chi tiết → về màn [Danh sách checklist].",
+      "failCondition": "Không mở được chi tiết / nút Quay lại không hoạt động."
+    },
+    {
+      "id": "ADM-DTL-05",
+      "section": "[ADMIN] Chi tiết checklist — BR-13",
+      "description": "Hiển thị position và department trên chi tiết",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Chi tiết checklist]\n3. Quan sát khối thông tin nhân viên",
+      "expected": "1. Hiển thị fullName + accountName\n2. Hiển thị position, department (JOIN bảng có sẵn)\n3. Officer trên task cũng có fullName + accountName",
+      "dependence": "[ADM-DTL-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "BR-13, BR-14",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_163958",
+          "runType": "case-run",
+          "rel": "ADM-DTL-05/ADM-DTL-05_detail_opened.png",
+          "name": "Mở chi tiết checklist"
+        },
+        {
+          "runId": "run_20260623_163958",
+          "runType": "case-run",
+          "rel": "ADM-DTL-05/ADM-DTL-05_employee_block.png",
+          "name": "employee block"
+        },
+        {
+          "runId": "run_20260623_163958",
+          "runType": "case-run",
+          "rel": "ADM-DTL-05/ADM-DTL-05_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_163958",
+          "runType": "case-run",
+          "rel": "ADM-DTL-05/ADM-DTL-05_search_result.png",
+          "name": "search result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_163745",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong mo duoc chi tiet checklist — can chay ADM-DTL-01 truoc",
+          "images": [
+            {
+              "runId": "run_20260623_163745",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_163745",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_163745",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_163842",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong du fullName + accountName trong khoi Nhan vien",
+          "images": [
+            {
+              "runId": "run_20260623_163842",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_163842",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_employee_block.png",
+              "name": "employee block"
+            },
+            {
+              "runId": "run_20260623_163842",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_163842",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_163958",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Khoi nhan vien OK — TK Chuyên viên (TKChuyenvien) — Chuyên viên / Ban Kinh doanh Online; can bo task: Quyền Phạm Năng (bosNangQP2)",
+          "images": [
+            {
+              "runId": "run_20260623_163958",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_detail_opened.png",
+              "name": "Mở chi tiết checklist"
+            },
+            {
+              "runId": "run_20260623_163958",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_employee_block.png",
+              "name": "employee block"
+            },
+            {
+              "runId": "run_20260623_163958",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_163958",
+              "runType": "case-run",
+              "rel": "ADM-DTL-05/ADM-DTL-05_search_result.png",
+              "name": "search result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Khối nhân viên trên chi tiết có fullName + accountName và thông tin chức vụ/đơn vị (BR-13).",
+      "failCondition": "Thiếu thông tin nhân viên trên màn chi tiết."
+    },
+    {
+      "id": "ADM-TPL-01",
+      "section": "[ADMIN] Mẫu checklist template — /hrm/checklist/template",
+      "description": "ADMIN truy cập danh sách template",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Chọn menu [Mẫu Checklist]\n3. Truy cập màn hình [Mẫu checklist]",
+      "expected": "1. Danh sách template hiển thị\n2. Có cột: Mã template, Tên template, Mô tả, Trạng thái, Ngày tạo, Chức năng\n3. Có button [Tạo template mới]",
+      "dependence": "",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "UC-01",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_163745",
+          "runType": "case-run",
+          "rel": "ADM-TPL-01/ADM-TPL-01_template_list.png",
+          "name": "template list"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_163745",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Danh sach template OK — 0 dong, du cot va nut Tao template moi",
+          "images": [
+            {
+              "runId": "run_20260623_163745",
+              "runType": "case-run",
+              "rel": "ADM-TPL-01/ADM-TPL-01_template_list.png",
+              "name": "template list"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Danh sách template hiển thị đủ cột (Mã, Tên, Mô tả, Trạng thái…) và có nút [Tạo template mới].",
+      "failCondition": "Không thấy bảng template / thiếu nút tạo mới."
+    },
+    {
+      "id": "ADM-TPL-02",
+      "section": "[ADMIN] Mẫu checklist template — UC-01",
+      "description": "ADMIN tạo template mới",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Nhấn button [Tạo template mới]\n4. Điền dữ liệu:\n- Mã template: automationtestver{N}\n- Tên template: automationtestver{N}\n- Mô tả: automationtestver{N}\n5. Thêm section và task (DurationDays nhập số: 3, 7, 14...)\n6. Gán [Cán bộ mặc định] cho từng task nếu có\n7. Nhấn button [Lưu]",
+      "expected": "1. Template tạo thành công\n2. DefaultOfficerId lưu per task (BR-12)\n3. IsActive = Active",
+      "dependence": "[ADM-TPL-01]",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "rel": "ADM-TPL-02/ADM-TPL-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "rel": "ADM-TPL-02/ADM-TPL-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "rel": "ADM-TPL-02/ADM-TPL-02_template_create_form.png",
+          "name": "Form tạo template"
+        },
+        {
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "rel": "ADM-TPL-02/ADM-TPL-02_template_create_result.png",
+          "name": "Kết quả tạo template"
+        },
+        {
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "rel": "ADM-TPL-02/ADM-TPL-02_verify_template_search.png",
+          "name": "Kết quả tìm template"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_171006",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tao template [automationtestver2] thanh cong va tim thay tren danh sach (Active)",
+          "images": [
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_verify_template_search.png",
+              "name": "Kết quả tìm template"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_171157",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tao template [automationtestver3] thanh cong va tim thay tren danh sach (Active)",
+          "images": [
+            {
+              "runId": "run_20260623_171157",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_171157",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_171157",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_171157",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_171157",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_verify_template_search.png",
+              "name": "Kết quả tìm template"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260623_171737",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tao template [automationtestver11] thanh cong va tim thay tren danh sach (Active)",
+          "images": [
+            {
+              "runId": "run_20260623_171737",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_171737",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_171737",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_form.png",
+              "name": "Form tạo template"
+            },
+            {
+              "runId": "run_20260623_171737",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_template_create_result.png",
+              "name": "Kết quả tạo template"
+            },
+            {
+              "runId": "run_20260623_171737",
+              "runType": "case-run",
+              "rel": "ADM-TPL-02/ADM-TPL-02_verify_template_search.png",
+              "name": "Kết quả tìm template"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Điền form tạo template (automationtestver{N}) + Lưu → thông báo thành công hoặc quay danh sách có bản ghi mới.",
+      "failCondition": "Không mở được form / không Lưu được / không có phản hồi thành công."
+    },
+    {
+      "id": "ADM-TPL-03",
+      "section": "[ADMIN] Mẫu checklist template — verify sau create",
+      "description": "Sau tạo template — quay danh sách kiểm tra hiển thị",
+      "procedure": "1. Hoàn tất tạo template tại case [ADM-TPL-02]\n2. Truy cập màn hình [Mẫu checklist]\n3. Nhập [Keyword] là mã hoặc tên template vừa tạo: automationtestver{N}\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Template vừa tạo xuất hiện trong danh sách\n2. Đúng mã, tên, trạng thái Active",
+      "dependence": "[ADM-TPL-02]",
+      "testData": "Keyword = automationtestver{N} vừa tạo",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Verify create → list",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_171006",
+          "runType": "case-run",
+          "rel": "ADM-TPL-03/ADM-TPL-03_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_171006",
+          "runType": "case-run",
+          "rel": "ADM-TPL-03/ADM-TPL-03_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_171006",
+          "runType": "case-run",
+          "rel": "ADM-TPL-03/ADM-TPL-03_verify_template_search.png",
+          "name": "Kết quả tìm template"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_171006",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tim thay template [automationtestver2] — ma/ten/trang thai dung",
+          "images": [
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-03/ADM-TPL-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-03/ADM-TPL-03_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_171006",
+              "runType": "case-run",
+              "rel": "ADM-TPL-03/ADM-TPL-03_verify_template_search.png",
+              "name": "Kết quả tìm template"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Tìm keyword automationtestver → template vừa tạo xuất hiện trong danh sách.",
+      "failCondition": "Không thấy template — cần chạy ADM-TPL-02 trước."
+    },
+    {
+      "id": "ADM-TPL-04",
+      "section": "[ADMIN] Mẫu checklist template",
+      "description": "ADMIN tìm kiếm template theo Keyword",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Nhập [Keyword] vào ô tìm kiếm: tuyendung\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Danh sách lọc theo Keyword\n2. Chỉ hiển thị template khớp",
+      "dependence": "[ADM-TPL-01]",
+      "testData": "Keyword: 'tuyendung'",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tim kiem template [tuyendung] OK",
+          "images": [
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04/ADM-TPL-04_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04/ADM-TPL-04_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04/ADM-TPL-04_template_search_result.png",
+              "name": "Tìm kiếm template"
+            }
+          ]
+        }
+      ],
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04/ADM-TPL-04_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04/ADM-TPL-04_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04/ADM-TPL-04_template_search_result.png",
+          "name": "Tìm kiếm template"
+        }
+      ]
+    },
+    {
+      "id": "ADM-TPL-04B",
+      "section": "[ADMIN] Mẫu checklist template",
+      "description": "ADMIN tìm kiếm template — keyword có khoảng trắng đầu",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Nhập [Keyword] vào ô tìm kiếm: [space]tuyendung (khoảng trắng + tuyendung)\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Danh sách lọc theo Keyword (FE trim/normalize space đầu)\n2. Vẫn hiển thị template Tuyển dụng khớp",
+      "dependence": "[ADM-TPL-01]",
+      "testData": "Keyword: ' tuyendung'",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Keyword có blank đầu — sau ADM-TPL-04",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172404",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04B/ADM-TPL-04B_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_172404",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04B/ADM-TPL-04B_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_172404",
+          "runType": "case-run",
+          "rel": "ADM-TPL-04B/ADM-TPL-04B_template_search_leading_space.png",
+          "name": "Tìm kiếm template — keyword có space đầu"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_172404",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Khong thay template Tuyen dung sau tim kiem [' tuyendung']",
+          "images": [
+            {
+              "runId": "run_20260623_172404",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04B/ADM-TPL-04B_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_172404",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04B/ADM-TPL-04B_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_172404",
+              "runType": "case-run",
+              "rel": "ADM-TPL-04B/ADM-TPL-04B_template_search_leading_space.png",
+              "name": "Tìm kiếm template — keyword có space đầu"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Tìm keyword [ tuyendung] (khoảng trắng + tuyendung) → bảng vẫn có template Tuyển dụng.",
+      "failCondition": "Keyword có space đầu không trả kết quả / không thấy template Tuyển dụng."
+    },
+    {
+      "id": "ADM-TPL-05",
+      "section": "[ADMIN] Mẫu checklist template",
+      "description": "ADMIN bật/tắt trạng thái Active template",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Chọn dòng template cần đổi trạng thái\n4. Nhấn toggle [Trạng thái] Active/Off",
+      "expected": "1. Trạng thái template đổi qua PATCH /toggleActive\n2. UI phản ánh Active hoặc Off",
+      "dependence": "[ADM-TPL-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-05/ADM-TPL-05_template_active_before_toggle.png",
+          "name": "Template trước khi toggle Active"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-05/ADM-TPL-05_template_on.png",
+          "name": "Template Tuyển dụng — On (khôi phục)"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-05/ADM-TPL-05_toggle_result.png",
+          "name": "toggle result"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Toggle trang thai template OK — da khoi phuc",
+          "images": [
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-05/ADM-TPL-05_template_active_before_toggle.png",
+              "name": "Template trước khi toggle Active"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-05/ADM-TPL-05_template_on.png",
+              "name": "Template Tuyển dụng — On (khôi phục)"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-05/ADM-TPL-05_toggle_result.png",
+              "name": "toggle result"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Toggle Active/Off trên template Tuyển dụng đổi trạng thái (script khôi phục lại sau khi test).",
+      "failCondition": "Toggle không đổi trạng thái switch."
+    },
+    {
+      "id": "ADM-TPL-06",
+      "section": "[ADMIN] Mẫu checklist template",
+      "description": "ADMIN xem chi tiết template",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Chọn dòng template\n4. Nhấn icon [Xem] tại cột [Chức năng]",
+      "expected": "1. Mở màn/xem chi tiết template\n2. Hiển thị sections, tasks, DefaultOfficerId",
+      "dependence": "[ADM-TPL-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-06/ADM-TPL-06_template_view.png",
+          "name": "template view"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Mo xem chi tiet template [Tuyển dụng] OK",
+          "images": [
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-06/ADM-TPL-06_template_view.png",
+              "name": "template view"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Icon [Xem] mở được màn/xem chi tiết template.",
+      "failCondition": "Không bấm được icon Xem / không mở chi tiết."
+    },
+    {
+      "id": "ADM-TPL-07",
+      "section": "[ADMIN] Mẫu checklist template — BR-08",
+      "description": "ADMIN sửa template khi không có instance active",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Chọn template không có instance Status ∈ {0,1,3}\n4. Nhấn icon [Sửa] tại cột [Chức năng]\n5. Sửa [Tên template] thành automationtestver{N}\n6. Nhấn button [Lưu]",
+      "expected": "1. Cập nhật thành công (BR-08)\n2. Thay đổi được lưu vào DB",
+      "dependence": "[ADM-TPL-01]\nTemplate không có instance active",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "BR-08",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-07/ADM-TPL-07_template_edit.png",
+          "name": "template edit"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-07/ADM-TPL-07_template_edit_filled.png",
+          "name": "Form sửa template đã điền tên mới"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-07/ADM-TPL-07_template_edit_result.png",
+          "name": "Kết quả sửa template"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Sua template thanh cong — ten moi [automationtestver12]",
+          "images": [
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-07/ADM-TPL-07_template_edit.png",
+              "name": "template edit"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-07/ADM-TPL-07_template_edit_filled.png",
+              "name": "Form sửa template đã điền tên mới"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-07/ADM-TPL-07_template_edit_result.png",
+              "name": "Kết quả sửa template"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Mở form Sửa template + đổi tên automationtestver{N} + Lưu thành công.",
+      "failCondition": "Không mở được form sửa / không Lưu được."
+    },
+    {
+      "id": "ADM-TPL-08",
+      "section": "[ADMIN] Mẫu checklist template — verify sau edit",
+      "description": "Sau sửa template — quay danh sách kiểm tra tên mới",
+      "procedure": "1. Hoàn tất sửa template tại case [ADM-TPL-07]\n2. Truy cập màn hình [Mẫu checklist]\n3. Nhập [Keyword]: automationtestver{N} vừa sửa\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Template hiển thị tên mới trong danh sách\n2. Dữ liệu khớp với lần sửa",
+      "dependence": "[ADM-TPL-07]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "Verify edit → list",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-08/ADM-TPL-08_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-08/ADM-TPL-08_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "rel": "ADM-TPL-08/ADM-TPL-08_verify_template_search.png",
+          "name": "Kết quả tìm template"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_172939",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "Tim thay template sau sua [automationtestver12] tren danh sach",
+          "images": [
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-08/ADM-TPL-08_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-08/ADM-TPL-08_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260623_172939",
+              "runType": "case-run",
+              "rel": "ADM-TPL-08/ADM-TPL-08_verify_template_search.png",
+              "name": "Kết quả tìm template"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Tìm automationtestver sau sửa → template hiển thị tên mới trong danh sách.",
+      "failCondition": "Không tìm thấy template sau sửa — cần chạy ADM-TPL-07 trước."
+    },
+    {
+      "id": "OFF-LST-01",
+      "section": "[OFFICER] Danh sách checklist — BR-10",
+      "description": "OFFICER chỉ thấy checklist có task được giao",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Chọn menu [Checklist]\n3. Truy cập màn hình [Danh sách checklist]",
+      "expected": "1. Danh sách chỉ instance có task AssignedOfficerId = OFFICER hiện tại (BR-10)\n2. Không thấy instance không liên quan\n3. Không truy cập được template admin-only",
+      "dependence": "OFFICER có task được giao trong ít nhất 1 instance",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_list_page.png",
+          "name": "list page"
+        },
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_template_access_attempt.png",
+          "name": "template access attempt"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "OFFICER van thay danh sach template — loi phan quyen",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_list_page.png",
+              "name": "list page"
+            },
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_template_access_attempt.png",
+              "name": "template access attempt"
+            }
+          ]
+        }
+      ],
+      "passCondition": "OFFICER thấy danh sách checklist trong phạm vi task được giao (BR-10); không truy cập được màn template admin-only.",
+      "failCondition": "Không thấy bảng danh sách / OFFICER vẫn thấy nội dung template admin."
+    },
+    {
+      "id": "OFF-LST-02",
+      "section": "[OFFICER] Danh sách checklist",
+      "description": "OFFICER tìm kiếm checklist theo Keyword",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhập [Keyword] vào ô tìm kiếm\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Kết quả lọc trong phạm vi quyền OFFICER\n2. Chỉ record liên quan task của OFFICER",
+      "dependence": "[OFF-LST-01]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-02/OFF-LST-02_search_filled.png",
+          "name": "search filled"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co dong de tim kiem — can OFF-LST-01",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-02/OFF-LST-02_search_filled.png",
+              "name": "search filled"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Nhập keyword [test] + Tìm kiếm → danh sách cập nhật trong phạm vi quyền OFFICER.",
+      "failCondition": "Không vào được danh sách / không thực hiện được tìm kiếm."
+    },
+    {
+      "id": "OFF-LST-03",
+      "section": "[OFFICER] Danh sách checklist",
+      "description": "OFFICER lọc checklist theo khoảng ngày",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Danh sách checklist]\n3. Chọn khoảng ngày trên lịch\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Danh sách lọc theo FromDate–ToDate\n2. Vẫn trong phạm vi quyền OFFICER",
+      "dependence": "[OFF-LST-01]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
+          "name": "OFFICER — bảng sau lọc ngày"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co dong de loc ngay — can OFF-LST-01",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
+              "name": "OFFICER — bảng sau lọc ngày"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Chọn khoảng ngày trên date picker → danh sách lọc được (dropdown tự áp dụng hoặc sau Tìm kiếm).",
+      "failCondition": "Không mở/chọn được lịch khoảng ngày."
+    },
+    {
+      "id": "OFF-LST-04",
+      "section": "[OFFICER] Danh sách checklist",
+      "description": "OFFICER làm mới danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhấn button [Làm mới]",
+      "expected": "1. Danh sách tải lại thành công",
+      "dependence": "[OFF-LST-01]",
+      "testData": "",
+      "result": "Pass",
+      "testDate": "2026-06-24",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-04/OFF-LST-04_after_refresh.png",
+          "name": "after refresh"
+        },
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-LST-04/OFF-LST-04_after_refresh_officer.png",
+          "name": "OFFICER — sau làm mới danh sách"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER lam moi danh sach OK (0 -> 0 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-04/OFF-LST-04_after_refresh.png",
+              "name": "after refresh"
+            },
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-04/OFF-LST-04_after_refresh_officer.png",
+              "name": "OFFICER — sau làm mới danh sách"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Nút làm mới (reload) tải lại danh sách checklist.",
+      "failCondition": "Không bấm được nút làm mới."
+    },
+    {
+      "id": "OFF-CFM-01",
+      "section": "[OFFICER] Xác nhận task — UC-03",
+      "description": "OFFICER mở chi tiết checklist có task được giao",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Danh sách checklist]\n3. Chọn instance có task AssignedOfficerId = mình\n4. Truy cập màn hình [Chi tiết checklist]",
+      "expected": "1. Hiển thị danh sách task theo section\n2. Task được giao có thể thao tác Xác nhận / Đổi cán bộ\n3. Có button [Xác nhận], [Đổi cán bộ] trên task",
+      "dependence": "[OFF-LST-01]\nInstance có task pending cho OFFICER",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "UC-03",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_officer_detail.png",
+          "name": "officer detail"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "OFFICER khong co instance/task de mo chi tiet — can du lieu test",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_officer_detail.png",
+              "name": "officer detail"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Màn chi tiết có task với nút [Đúng hạn]/Xác nhận hoặc [Đổi CB]/Đổi cán bộ.",
+      "failCondition": "OFFICER không có instance để mở / không thấy thao tác task trên chi tiết."
+    },
+    {
+      "id": "OFF-CFM-02",
+      "section": "[OFFICER] Xác nhận task — BR-01 UC-03",
+      "description": "OFFICER xác nhận task đúng hạn (không cần employee confirm trước)",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Chi tiết checklist]\n3. Chọn task chưa confirm, Deadline chưa qua\n4. Nhấn button [Xác nhận]\n5. Nhập [Ghi chú minh chứng]: automationtestver{N}\n6. Chụp ảnh minh chứng và lưu\n7. Nhấn button [Xác nhận] trên modal",
+      "expected": "1. OfficerStatus = Confirmed (1) — BR-01 song song\n2. EmployeeStatus vẫn có thể Pending — không bắt buộc thứ tự\n3. Task chưa done cho đến khi cả 2 bên ∈ {1,3}\n4. Có ảnh minh chứng trong ô [Minh chứng]",
+      "dependence": "[OFF-CFM-01]\nTask trước Deadline",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "BR-01, UC-03 — chụp ảnh khi chạy automation",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+          "name": "officer detail"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co chi tiet de xac nhan",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận modal thành công (BR-01).",
+      "failCondition": "Không có chi tiết / không thấy nút Đúng hạn."
+    },
+    {
+      "id": "OFF-CFM-03",
+      "section": "[OFFICER] Xác nhận task — BR-03",
+      "description": "OFFICER xác nhận task muộn — bắt buộc lý do",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Chi tiết checklist]\n3. Chọn task quá Deadline, OfficerStatus = Pending\n4. Nhấn button [Xác nhận]\n5. Nhập [Lý do muộn]: automationtestver{N}\n6. Nhấn button [Xác nhận]",
+      "expected": "1. OfficerStatus = Late (3)\n2. OfficerLateReason bắt buộc (BR-03)\n3. Ghi log OfficerConfirmLate",
+      "dependence": "[OFF-CFM-01]\nTask quá Deadline",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "BR-03",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+          "name": "officer detail"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co chi tiet",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+              "name": "officer detail"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Task quá hạn: bấm [Muộn] → nhập lý do → Xác nhận (BR-03).",
+      "failCondition": "Không có task overdue (không thấy nút Muộn)."
+    },
+    {
+      "id": "OFF-CFM-04",
+      "section": "[OFFICER] Đổi cán bộ — UC-05 BR-04",
+      "description": "OFFICER đổi cán bộ phụ trách task chưa confirm",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n2. Truy cập màn hình [Chi tiết checklist]\n3. Chọn task có OfficerStatus ∈ {0, 2}\n4. Nhấn button [Đổi cán bộ]\n5. Chọn cán bộ mới\n6. Nhấn button [Lưu]",
+      "expected": "1. AssignedOfficerId đổi thành công (BR-04)\n2. Ghi log ChangeOfficer\n3. Notify OFFICER mới",
+      "dependence": "[OFF-CFM-01]\nTask chưa officer confirm",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "UC-05, BR-04",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_officer_detail.png",
+          "name": "officer detail"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co chi tiet",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_detail.png",
+              "name": "officer detail"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Flow [Đổi cán bộ] mở modal, chọn cán bộ mới và Lưu (BR-04).",
+      "failCondition": "Không thấy nút Đổi cán bộ / không hoàn tất flow."
+    },
+    {
+      "id": "OFF-CFM-05",
+      "section": "[OFFICER] Undo xác nhận — BR-02",
+      "description": "OFFICER undo xác nhận trong 60 phút khi employee chưa confirm",
+      "procedure": "1. Hoàn tất officer confirm tại case [OFF-CFM-02]\n2. Đảm bảo EmployeeStatus task đó = 0\n3. Trong vòng 60 phút, nhấn button [Hoàn tác] / Undo\n4. Xác nhận undo",
+      "expected": "1. OfficerStatus = Undone (2) hoặc về Pending\n2. canOfficerUndo = true khi trong 60' và employee chưa confirm (BR-02)\n3. Sau employee confirm → không undo được",
+      "dependence": "[OFF-CFM-02]\nEmployeeStatus = 0, trong 60 phút",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-24",
+      "note": "BR-02",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_officer_detail.png",
+          "name": "officer detail"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260624_092005",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co chi tiet",
+          "images": [
+            {
+              "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_officer_detail.png",
+              "name": "officer detail"
+            }
+          ]
+        }
+      ],
+      "passCondition": "Nút [Hoàn tác] undo xác nhận officer trong cửa sổ 60 phút (BR-02).",
+      "failCondition": "Không thấy nút Hoàn tác — cần officer đã confirm gần đây."
+    },
+    {
+      "id": "EMP-LST-01",
+      "section": "[EMPLOYEE] Danh sách checklist — BR-10",
+      "description": "EMPLOYEE chỉ thấy checklist của bản thân",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Chọn menu [Checklist]\n3. Truy cập màn hình [Danh sách checklist]",
+      "expected": "1. Chỉ instance có EmployeeId = user hiện tại (BR-10)\n2. Không thấy checklist nhân viên khác",
+      "dependence": "EMPLOYEE có ít nhất 1 instance",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "EMPLOYEE thấy ≥1 dòng checklist của bản thân (BR-10).",
+      "failCondition": "Không thấy bảng / 0 dòng checklist của employee đăng nhập."
+    },
+    {
+      "id": "EMP-LST-02",
+      "section": "[EMPLOYEE] Danh sách checklist",
+      "description": "EMPLOYEE tìm kiếm checklist",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Danh sách checklist]\n3. Nhập [Keyword] vào ô tìm kiếm\n4. Nhấn button [Tìm kiếm]",
+      "expected": "1. Kết quả trong phạm vi instance của EMPLOYEE",
+      "dependence": "[EMP-LST-01]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "Tìm keyword [test] trong phạm vi checklist của EMPLOYEE.",
+      "failCondition": "Không vào được danh sách / không tìm kiếm được."
+    },
+    {
+      "id": "EMP-LST-03",
+      "section": "[EMPLOYEE] Danh sách checklist",
+      "description": "Hiển thị badge overdue trên danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Danh sách checklist]\n3. Quan sát dòng có task quá hạn",
+      "expected": "1. Hiển thị badge/số overdueTaskCount > 0\n2. Instance không overdue không hiển thị badge (hoặc = 0)",
+      "dependence": "[EMP-LST-01]\nInstance có task overdue",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "overdue badge — explore sample: 2 trễ",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "Danh sách hiển thị badge/tag overdue (task trễ) trên ít nhất 1 dòng.",
+      "failCondition": "Không thấy badge overdue — cần instance có task quá hạn."
+    },
+    {
+      "id": "EMP-LST-04",
+      "section": "[EMPLOYEE] Danh sách checklist",
+      "description": "EMPLOYEE mở chi tiết checklist từ danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Danh sách checklist]\n3. Chọn dòng checklist của bản thân\n4. Truy cập màn hình [Chi tiết checklist]",
+      "expected": "1. Mở đúng instance của EMPLOYEE\n2. Hiển thị task cần xác nhận",
+      "dependence": "[EMP-LST-01]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "Mở dòng danh sách → chi tiết checklist; URL /hrm/checklist/{id}.",
+      "failCondition": "Không có checklist / không mở được chi tiết."
+    },
+    {
+      "id": "EMP-CFM-01",
+      "section": "[EMPLOYEE] Xác nhận task — BR-01 UC-04",
+      "description": "EMPLOYEE xác nhận task không cần officer confirm trước",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Chi tiết checklist]\n3. Chọn task EmployeeStatus = Pending, OfficerStatus vẫn = 0\n4. Nhấn button [Xác nhận]\n5. Nhập [Ghi chú]: automationtestver{N}\n6. Chụp ảnh minh chứng\n7. Nhấn button [Xác nhận]",
+      "expected": "1. Employee confirm thành công dù officer chưa confirm (BR-01)\n2. EmployeeStatus = Confirmed (1)\n3. Ảnh minh chứng lưu vào ô [Minh chứng]",
+      "dependence": "[EMP-LST-04]\nTask employee pending, officer chưa confirm",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "BR-01, UC-04",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "EMPLOYEE bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận (BR-01, không cần officer trước).",
+      "failCondition": "Không có chi tiết / không thấy nút Đúng hạn."
+    },
+    {
+      "id": "EMP-CFM-02",
+      "section": "[EMPLOYEE] Xác nhận task — BR-03",
+      "description": "EMPLOYEE xác nhận muộn — bắt buộc lý do",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Chi tiết checklist]\n3. Chọn task quá Deadline\n4. Nhấn button [Xác nhận]\n5. Nhập [Lý do muộn]: automationtestver{N}\n6. Nhấn button [Xác nhận]",
+      "expected": "1. EmployeeStatus = Late (3)\n2. EmployeeLateReason bắt buộc (BR-03)",
+      "dependence": "[EMP-LST-04]\nTask quá Deadline",
+      "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "BR-03",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "Task quá hạn: [Muộn] → lý do → Xác nhận (BR-03).",
+      "failCondition": "Không có task overdue."
+    },
+    {
+      "id": "EMP-CFM-03",
+      "section": "[EMPLOYEE] Chi tiết checklist",
+      "description": "EMPLOYEE xem nhật ký và quay lại danh sách",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản EMPLOYEE\n2. Truy cập màn hình [Chi tiết checklist]\n3. Nhấn button [Nhật ký]\n4. Đóng nhật ký\n5. Nhấn button [Quay lại]",
+      "expected": "1. Nhật ký hiển thị đúng\n2. Quay về [Danh sách checklist] thành công",
+      "dependence": "[EMP-LST-04]",
+      "testData": "",
+      "result": "Fail",
+      "testDate": "2026-06-23",
+      "note": "Explore: run_23-06-2026_12-53-02",
+      "evidence": "",
+      "evidenceImages": [],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_140651",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Fail",
+          "message": "Page.goto: Target page, context or browser has been closed",
+          "images": []
+        }
+      ],
+      "passCondition": "Mở [Nhật ký] từ chi tiết + [Quay lại] về danh sách.",
+      "failCondition": "Không mở Nhật ký / Quay lại thất bại."
+    },
+    {
+      "id": "BR-TPL-01",
+      "section": "[BR] Template Active/Off",
+      "description": "Template Tuyển dụng OFF — không hiện trong dropdown Tạo checklist",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Tìm dòng template [Tuyển dụng]\n4. Nhấn toggle [Trạng thái] chuyển sang Off\n5. Truy cập màn hình [Danh sách checklist]\n6. Nhấn button [Tạo checklist]\n7. Nhấn dropdown [Template]\n8. Quan sát danh sách lựa chọn",
+      "expected": "1. Dropdown Template không chứa [Tuyển dụng]\n2. Các template Active khác vẫn hiển thị bình thường",
+      "dependence": "[ADM-TPL-01]\nTemplate: Tuyển dụng (mã tuyendung)",
+      "testData": "Template: Tuyển dụng",
+      "result": "Pass",
+      "testDate": "2026-06-23",
+      "note": "BR template IsActive — workflow/BR/BR-TPL-01.md",
+      "evidence": "",
+      "evidenceImages": [
+        {
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "rel": "BR-TPL-01/BR-TPL-01_template_active_before_off.png",
+          "name": "Template Active — trước khi chuyển Off"
+        },
+        {
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "rel": "BR-TPL-01/BR-TPL-01_template_dropdown.png",
+          "name": "Dropdown Template — Tạo checklist"
+        },
+        {
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "rel": "BR-TPL-01/BR-TPL-01_template_list_before.png",
+          "name": "Danh sách template (trước)"
+        },
+        {
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "rel": "BR-TPL-01/BR-TPL-01_template_off.png",
+          "name": "Template Tuyển dụng — Off"
+        },
+        {
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "rel": "BR-TPL-01/BR-TPL-01_template_on.png",
+          "name": "Template Tuyển dụng — On (khôi phục)"
+        }
+      ],
+      "evidenceRuns": [
+        {
+          "runNumber": 1,
+          "runId": "run_20260623_134452",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "\"Tuyển dụng\" khong hien trong dropdown khi Off — dung BR",
+          "images": [
+            {
+              "runId": "run_20260623_134452",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_dropdown.png",
+              "name": "Dropdown Template — Tạo checklist"
+            },
+            {
+              "runId": "run_20260623_134452",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_list_before.png",
+              "name": "Danh sách template (trước)"
+            },
+            {
+              "runId": "run_20260623_134452",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_off.png",
+              "name": "Template Tuyển dụng — Off"
+            }
+          ]
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260623_134935",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "\"Tuyển dụng\" khong hien trong dropdown khi Off — dung BR",
+          "images": [
+            {
+              "runId": "run_20260623_134935",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_dropdown.png",
+              "name": "Dropdown Template — Tạo checklist"
+            },
+            {
+              "runId": "run_20260623_134935",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_list_before.png",
+              "name": "Danh sách template (trước)"
+            },
+            {
+              "runId": "run_20260623_134935",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_off.png",
+              "name": "Template Tuyển dụng — Off"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260623_135327",
+          "runType": "case-run",
+          "testDate": "2026-06-23",
+          "result": "Pass",
+          "message": "\"Tuyển dụng\" khong hien trong dropdown khi Off — dung BR",
+          "images": [
+            {
+              "runId": "run_20260623_135327",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_active_before_off.png",
+              "name": "Template Active — trước khi chuyển Off"
+            },
+            {
+              "runId": "run_20260623_135327",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_dropdown.png",
+              "name": "Dropdown Template — Tạo checklist"
+            },
+            {
+              "runId": "run_20260623_135327",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_list_before.png",
+              "name": "Danh sách template (trước)"
+            },
+            {
+              "runId": "run_20260623_135327",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_off.png",
+              "name": "Template Tuyển dụng — Off"
+            },
+            {
+              "runId": "run_20260623_135327",
+              "runType": "case-run",
+              "rel": "BR-TPL-01/BR-TPL-01_template_on.png",
+              "name": "Template Tuyển dụng — On (khôi phục)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-01",
+      "section": "[BR] Xác nhận song song",
+      "description": "Officer và Employee xác nhận độc lập — không thứ tự",
+      "procedure": "1. Chuẩn bị instance có task pending cả 2 bên\n2. Đăng nhập EMPLOYEE — xác nhận task trước (case [EMP-CFM-01])\n3. Đăng xuất — đăng nhập OFFICER — xác nhận cùng task sau (case [OFF-CFM-02])\n4. Quan sát trạng thái task và instance",
+      "expected": "1. Cả 2 confirm thành công không phụ thuộc thứ tự (BR-01)\n2. Task done khi Officer ∈ {1,3} AND Employee ∈ {1,3}",
+      "dependence": "[EMP-CFM-01], [OFF-CFM-02]",
+      "testData": "",
+      "result": "Untested",
+      "testDate": "",
+      "note": "BR-01 — checklist-ba §2",
+      "evidence": "",
+      "evidenceImages": []
+    },
+    {
+      "id": "BR-05",
+      "section": "[BR] Auto complete instance",
+      "description": "Instance tự chuyển Completed khi mọi task done",
+      "procedure": "1. Chuẩn bị instance gần hoàn thành — còn 1 task chưa done\n2. OFFICER và EMPLOYEE xác nhận task cuối\n3. ADMIN mở [Danh sách checklist] kiểm tra trạng thái",
+      "expected": "1. Mọi task done → Instance Status = Completed (2) (BR-05)\n2. Notify ADMIN + EMPLOYEE\n3. progressPercent = 100%",
+      "dependence": "[OFF-CFM-02], [EMP-CFM-01]",
+      "testData": "",
+      "result": "Untested",
+      "testDate": "",
+      "note": "BR-05",
+      "evidence": "",
+      "evidenceImages": []
+    },
+    {
+      "id": "BR-08",
+      "section": "[BR] Sửa template",
+      "description": "Không sửa template khi còn instance active",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Truy cập màn hình [Mẫu checklist]\n3. Chọn template đang có instance Status ∈ {Pending, InProgress, Overdue}\n4. Nhấn icon [Sửa]",
+      "expected": "1. Hệ thống chặn sửa hoặc báo lỗi (BR-08)\n2. Template không bị thay đổi",
+      "dependence": "Template có instance active",
+      "testData": "",
+      "result": "Untested",
+      "testDate": "",
+      "note": "BR-08",
+      "evidence": "",
+      "evidenceImages": []
+    },
+    {
+      "id": "BR-09",
+      "section": "[BR] Deadline calendar",
+      "description": "Deadline task = StartDate + DurationDays (ngày calendar)",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Tạo instance với StartDate và template có DurationDays = 7\n3. Mở [Chi tiết checklist] kiểm tra Deadline từng task",
+      "expected": "1. Deadline = StartDate + 7 ngày calendar (BR-09)\n2. Không trừ T7/CN",
+      "dependence": "[ADM-INS-01]\nTemplate task DurationDays = 7",
+      "testData": "DurationDays: 7 (số)",
+      "result": "Untested",
+      "testDate": "",
+      "note": "BR-09",
+      "evidence": "",
+      "evidenceImages": []
+    },
+    {
+      "id": "BR-12",
+      "section": "[BR] Officer mặc định từ template",
+      "description": "AssignedOfficerId tự áp từ DefaultOfficerId khi tạo instance",
+      "procedure": "1. Đăng nhập hệ thống bằng tài khoản ADMIN\n2. Tạo/sử dụng template có DefaultOfficerId trên từng task\n3. Tạo instance mới từ template đó\n4. Mở [Chi tiết checklist] kiểm tra AssignedOfficerId",
+      "expected": "1. Mỗi task_item.AssignedOfficerId = template_task.DefaultOfficerId (BR-12)\n2. Nếu DefaultOfficerId null → dùng assignedOfficerId request",
+      "dependence": "[ADM-TPL-02], [ADM-INS-01]",
+      "testData": "",
+      "result": "Untested",
+      "testDate": "",
+      "note": "BR-12",
+      "evidence": "",
+      "evidenceImages": []
+    }
+  ],
+  "sourceExploreRun": "run_23-06-2026_12-53-02",
+  "generatedAt": "2026-06-23T13:34:49",
+  "stats": {
+    "pass": 20,
+    "fail": 22,
+    "untested": 5,
+    "na": 0,
+    "total": 47
+  },
+  "updatedAt": "2026-06-24T09:23:23",
+  "exportedAt": "2026-06-23T13:34:49"
+}
