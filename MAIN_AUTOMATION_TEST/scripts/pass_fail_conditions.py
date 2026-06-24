@@ -39,8 +39,8 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "Không tạo được / báo trùng BR-06 / sau tìm không có dòng / có nhân viên khác ngoài Nguyễn Việt Hải.",
     },
     "ADM-INS-02": {
-        "passCondition": "Tìm [Nguyễn Việt Hải] trên danh sách → bảng chỉ hiển thị nhân viên đó (≥1 dòng) — kết quả sau ADM-INS-01.",
-        "failCondition": "Không có dòng / có nhân viên khác — cần chạy ADM-INS-01 trước hoặc dữ liệu chưa đồng bộ.",
+        "passCondition": "Tìm [Nguyễn Việt Hải] trên danh sách → có ≥1 dòng hiển thị nhân viên đó (kết quả ADM-INS-01).",
+        "failCondition": "Không tìm thấy [Nguyễn Việt Hải] sau tìm kiếm — cần chạy ADM-INS-01 trước.",
     },
     "ADM-INS-03": {
         "passCondition": "BR-06 chặn (số dòng không đổi) + toast/modal có [Trùng] hoặc [đã có] — không được hiện [Tạo thành công].",

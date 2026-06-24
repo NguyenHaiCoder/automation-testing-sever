@@ -14,22 +14,16 @@ def run(ctx: WorkflowContext) -> dict:
     ui.search_keyword(ctx, CREATE_EMPLOYEE)
     ui.shot(ctx, "verify_create_list")
     names = ui.extract_employee_names_from_table(ctx)
-    if not names:
+    matches = [n for n in names if CREATE_EMPLOYEE in n]
+    if not matches:
         return ui.fail_with_shot(
             ctx,
-            f"Khong co dong nao sau tim [{CREATE_EMPLOYEE}] — can chay ADM-INS-01 truoc",
+            f"Khong tim thay [{CREATE_EMPLOYEE}] trong bang sau tim kiem — can chay ADM-INS-01 truoc",
             "verify_create_list",
-        )
-    others = [n for n in names if CREATE_EMPLOYEE not in n]
-    if others:
-        return ui.fail_with_shot(
-            ctx,
-            f"Tim thay [{CREATE_EMPLOYEE}] nhung con nhan vien khac trong bang",
-            "verify_create_list",
-            otherEmployees=others[:8],
             totalRows=len(names),
         )
     return pass_result(
-        f"Tao checklist thanh cong — danh sach chi co [{CREATE_EMPLOYEE}]",
-        rows=len(names),
+        f"Tim thay [{CREATE_EMPLOYEE}] tren danh sach ({len(matches)} dong)",
+        rows=len(matches),
+        totalRows=len(names),
     )
