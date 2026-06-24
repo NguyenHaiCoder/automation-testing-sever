@@ -2,27 +2,39 @@
 """
 OFF-CFM-01 — OFFICER mở chi tiết checklist có task được giao.
 
-Phụ thuộc OFF-LST-01: checklist automationtestver{N}_autotestasignees (CB TK Trưởng phòng).
+Luồng: OFFICER (trưởng phòng) tự tạo template + checklist → mở chi tiết task giao cho mình.
 """
 from __future__ import annotations
 
 from workflow.OFFICER import off_helpers as off
 from workflow.OFFICER import off_lst_prep as prep
+from workflow.OFFICER.off_constants import ASSIGN_EMPLOYEE, OFFICER_CAN_BO
 from workflow.common import WorkflowContext
 from workflow.helpers import checklist_ui as ui
 from workflow.helpers.outcome import pass_result
 
 
 def run(ctx: WorkflowContext) -> dict:
-    template_name = prep.resolve_lst01_template(ctx)
-    if not template_name:
-        return ui.fail_with_shot(
-            ctx,
-            "Chua co checklist OFF-LST-01 — chay OFF-LST-01 truoc",
-            "officer_detail",
-        )
+    template_name = prep.next_assignees_template_name()
 
     off.login_officer(ctx)
+
+    if not prep.create_template_two_tasks(ctx, template_name, OFFICER_CAN_BO):
+        return ui.fail_with_shot(
+            ctx,
+            f"OFFICER khong tao duoc template [{template_name}] tren Quan ly template",
+            "officer_template_result",
+        )
+
+    if not prep.create_checklist_instance(ctx, template_name, OFFICER_CAN_BO, ASSIGN_EMPLOYEE):
+        return ui.fail_with_shot(
+            ctx,
+            f"OFFICER khong tao duoc checklist — template [{template_name}], NV [{ASSIGN_EMPLOYEE}]",
+            "officer_create_result",
+        )
+
+    prep.remember_lst01_template(ctx, template_name)
+
     if not off.open_officer_detail_for_template(ctx, template_name):
         return ui.fail_with_shot(
             ctx,
@@ -45,7 +57,7 @@ def run(ctx: WorkflowContext) -> dict:
         )
 
     return pass_result(
-        f"OFFICER mo chi tiet [{template_name}] — co task voi nut thao tac",
+        f"OFFICER tu tao + mo chi tiet [{template_name}] — co task giao cho minh",
         templateName=template_name,
         hasSection=has_section,
         hasConfirm=has_confirm,

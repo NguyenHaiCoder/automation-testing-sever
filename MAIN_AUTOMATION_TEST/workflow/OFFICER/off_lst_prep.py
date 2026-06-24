@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Chuẩn bị dữ liệu ADMIN cho OFF-LST-01 (template + checklist)."""
+"""Chuẩn bị template + checklist assignees — dùng ADMIN (OFF-LST-01) hoặc OFFICER (OFF-CFM-01)."""
 from __future__ import annotations
 
 import re
@@ -154,13 +154,13 @@ def create_template_two_tasks(ctx: WorkflowContext, template_name: str, default_
         return False
     _assign_default_officer(ctx, modal, 1, default_officer)
 
-    ui.shot(ctx, "admin_template_form")
+    ui.shot(ctx, "officer_template_form")
     submit = modal.locator("button:has-text('Lưu'), button:has-text('Tạo')").first
     if not submit.count():
         return False
     submit.click(timeout=8000)
     ctx.page.wait_for_timeout(3500)
-    ui.shot(ctx, "admin_template_result")
+    ui.shot(ctx, "officer_template_result")
 
     body = ctx.page.locator("body").inner_text().lower()
     if "thành công" in body or "thanh cong" in body:
