@@ -103,8 +103,8 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "Không tìm thấy đúng tên sau sửa — cần chạy ADM-TPL-07 trước.",
     },
     "OFF-LST-01": {
-        "passCondition": "OFFICER thấy danh sách checklist trong phạm vi task được giao (BR-10); không truy cập được màn template admin-only.",
-        "failCondition": "Không thấy bảng danh sách / OFFICER vẫn thấy nội dung template admin.",
+        "passCondition": "Sau ADMIN tạo template [automationtestver{N}-autotestasignees] + checklist (NV TK Chuyên Viên), OFFICER đăng nhập tìm đúng tên → có ≥1 dòng.",
+        "failCondition": "Không tạo được template/checklist (ADMIN) hoặc OFFICER không tìm thấy checklist vừa tạo.",
     },
     "OFF-LST-02": {
         "passCondition": "Nhập keyword [test] + Tìm kiếm → danh sách cập nhật trong phạm vi quyền OFFICER.",

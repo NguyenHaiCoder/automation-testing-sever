@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-Test data OFFICER — khớp accounts.env (tktruongphong@gmail.com / TK Trưởng phòng).
-
-Khi ADMIN tạo checklist cho OFFICER test: chọn cán bộ [TK Trưởng phòng].
-(Khác với ADM-INS mặc định Quyền Phạm Năng — officer login sẽ không thấy dòng đó.)
-"""
+"""Test data OFF-LST-01 — template assignees + nhân viên checklist."""
 OFFICER_CAN_BO = "TK Trưởng phòng"
+ASSIGN_EMPLOYEE = "TK Chuyên Viên"
+TEMPLATE_SUFFIX = "-autotestasignees"
 SEARCH_KEYWORD = "test"
