@@ -23,7 +23,7 @@ def run(ctx: WorkflowContext) -> dict:
         return ui.fail_with_shot(
             ctx,
             f"ADMIN khong tao duoc template [{template_name}] (2 dau viec)",
-            "admin_template_result",
+            "officer_template_result",
         )
     if not prep.create_checklist_instance(ctx, template_name, OFFICER_CAN_BO, ASSIGN_EMPLOYEE):
         return ui.fail_with_shot(
