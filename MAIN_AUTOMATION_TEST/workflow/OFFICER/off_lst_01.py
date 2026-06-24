@@ -45,6 +45,7 @@ def run(ctx: WorkflowContext) -> dict:
         )
 
     rows = ui.data_row_count(ctx)
+    prep.remember_lst01_template(ctx, template_name)
     return pass_result(
         f"OFFICER tim thay checklist [{template_name}] ({rows} dong)",
         templateName=template_name,

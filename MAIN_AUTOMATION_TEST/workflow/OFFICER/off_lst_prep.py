@@ -7,18 +7,44 @@ import re
 from playwright.sync_api import Locator
 
 from workflow.ADMIN import create_checklist
-from workflow.ADMIN.tpl_helpers import allocate_next_template_version
+from workflow.ADMIN.tpl_helpers import allocate_next_template_version, last_allocated_template_name
 from workflow.OFFICER.off_constants import TEMPLATE_SUFFIX
 from workflow.common import WorkflowContext
 from workflow.helpers import checklist_ui as ui
 from workflow.helpers import template_ui as tpl
 
 DEFAULT_DURATION_DAYS = 7
+OFF_LST01_MARKER = "_off_lst01_template.txt"
 
 
 def next_assignees_template_name() -> str:
     n = allocate_next_template_version()
     return f"automationtestver{n}{TEMPLATE_SUFFIX}"
+
+
+def remember_lst01_template(ctx: WorkflowContext, template_name: str) -> None:
+    marker = ctx.run_dir.parent / OFF_LST01_MARKER
+    marker.write_text(template_name.strip(), encoding="utf-8")
+
+
+def resolve_lst01_template(ctx: WorkflowContext) -> str | None:
+    """Tên checklist OFF-LST-01 — ưu tiên marker cùng session."""
+    marker = ctx.run_dir.parent / OFF_LST01_MARKER
+    if marker.is_file():
+        name = marker.read_text(encoding="utf-8").strip()
+        if name:
+            return name
+    last = last_allocated_template_name()
+    if last:
+        return last if last.endswith(TEMPLATE_SUFFIX) else f"{last}{TEMPLATE_SUFFIX}"
+    return None
+
+
+def resolve_lst01_search_keyword(ctx: WorkflowContext) -> str:
+    name = resolve_lst01_template(ctx)
+    if name:
+        return name
+    return TEMPLATE_SUFFIX.lstrip("_")
 
 
 def _fill_input_verified(ctx: WorkflowContext, inp: Locator, value: str, label: str) -> bool:

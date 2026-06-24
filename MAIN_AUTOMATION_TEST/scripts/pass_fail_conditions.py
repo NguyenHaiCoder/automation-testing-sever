@@ -107,12 +107,12 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "Không tạo được template/checklist (ADMIN) hoặc OFFICER không tìm thấy checklist vừa tạo.",
     },
     "OFF-LST-02": {
-        "passCondition": "Nhập keyword [test] + Tìm kiếm → danh sách cập nhật trong phạm vi quyền OFFICER.",
-        "failCondition": "Không vào được danh sách / không thực hiện được tìm kiếm.",
+        "passCondition": "OFFICER tìm keyword checklist OFF-LST-01 (automationtestver{N}_autotestasignees) → có ≥1 dòng trong phạm vi quyền.",
+        "failCondition": "Không tìm thấy record OFF-LST-01 — cần chạy OFF-LST-01 trước.",
     },
     "OFF-LST-03": {
-        "passCondition": "Chọn khoảng ngày trên date picker → danh sách lọc được (dropdown tự áp dụng hoặc sau Tìm kiếm).",
-        "failCondition": "Không mở/chọn được lịch khoảng ngày.",
+        "passCondition": "OFFICER lọc khoảng ngày 01/06/2026–30/06/2026 → có dòng trong phạm vi quyền (gồm checklist OFF-LST-01 nếu đã chạy).",
+        "failCondition": "Không lọc được / 0 dòng sau lọc / mất record OFF-LST-01 trong khoảng ngày.",
     },
     "OFF-LST-04": {
         "passCondition": "Nút làm mới (reload) tải lại danh sách checklist.",
