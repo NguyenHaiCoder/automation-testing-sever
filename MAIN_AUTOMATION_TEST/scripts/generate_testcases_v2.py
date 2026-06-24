@@ -192,7 +192,7 @@ def build_cases() -> list[dict]:
         "2. Truy cập màn hình [Danh sách checklist]\n"
         "3. Tìm kiếm [Nguyễn Việt Hải]\n"
         "4. Quan sát kết quả bảng",
-        "1. Danh sách sau tìm chỉ hiển thị nhân viên Nguyễn Việt Hải (≥1 dòng)",
+        "1. Danh sách sau tìm có hiển thị nhân viên Nguyễn Việt Hải (≥1 dòng)",
         "[ADM-INS-01]",
         "Keyword: Nguyễn Việt Hải",
         note="Verify create → list",

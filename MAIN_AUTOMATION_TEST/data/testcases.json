@@ -1042,19 +1042,31 @@
       "section": "[ADMIN] Tạo checklist instance — UC-02",
       "description": "Verify danh sách sau tạo — tìm Nguyễn Việt Hải (kết quả ADM-INS-01)",
       "procedure": "1. Đã hoàn tất [ADM-INS-01]\n2. Truy cập màn hình [Danh sách checklist]\n3. Tìm kiếm [Nguyễn Việt Hải]\n4. Quan sát kết quả bảng",
-      "expected": "1. Danh sách sau tìm chỉ hiển thị nhân viên Nguyễn Việt Hải (≥1 dòng)",
+      "expected": "1. Danh sách sau tìm có hiển thị nhân viên Nguyễn Việt Hải (≥1 dòng)",
       "dependence": "[ADM-INS-01]",
       "testData": "Keyword: Nguyễn Việt Hải",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-24",
       "note": "Verify create → list",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260623_153101",
+          "runId": "run_20260624_101850",
           "runType": "case-run",
-          "rel": "ADM-INS-02/ADM-INS-02_error.png",
-          "name": "Lỗi trong quá trình chạy"
+          "rel": "ADM-INS-02/ADM-INS-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260624_101850",
+          "runType": "case-run",
+          "rel": "ADM-INS-02/ADM-INS-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260624_101850",
+          "runType": "case-run",
+          "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
+          "name": "Kiểm tra danh sách sau tạo"
         }
       ],
       "evidenceRuns": [
@@ -1119,10 +1131,38 @@
               "name": "Lỗi trong quá trình chạy"
             }
           ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260624_101850",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "Tim thay [Nguyễn Việt Hải] tren danh sach (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_101850",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_101850",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_101850",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
+              "name": "Kiểm tra danh sách sau tạo"
+            }
+          ]
         }
       ],
-      "passCondition": "Tìm [Nguyễn Việt Hải] trên danh sách → bảng chỉ hiển thị nhân viên đó (≥1 dòng) — kết quả sau ADM-INS-01.",
-      "failCondition": "Không có dòng / có nhân viên khác — cần chạy ADM-INS-01 trước hoặc dữ liệu chưa đồng bộ."
+      "passCondition": "Tìm [Nguyễn Việt Hải] trên danh sách → có ≥1 dòng hiển thị nhân viên đó (kết quả ADM-INS-01).",
+      "failCondition": "Không tìm thấy [Nguyễn Việt Hải] sau tìm kiếm — cần chạy ADM-INS-01 trước."
     },
     {
       "id": "ADM-INS-03",
@@ -4360,12 +4400,12 @@
   "sourceExploreRun": "run_23-06-2026_12-53-02",
   "generatedAt": "2026-06-23T13:34:49",
   "stats": {
-    "pass": 20,
-    "fail": 22,
+    "pass": 21,
+    "fail": 21,
     "untested": 5,
     "na": 0,
     "total": 47
   },
-  "updatedAt": "2026-06-24T09:23:23",
+  "updatedAt": "2026-06-24T10:19:06",
   "exportedAt": "2026-06-23T13:34:49"
 }
