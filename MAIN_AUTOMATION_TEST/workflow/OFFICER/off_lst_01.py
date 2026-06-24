@@ -2,7 +2,7 @@
 """
 OFF-LST-01 — OFFICER thấy checklist được giao (BR-10).
 
-Luồng: ADMIN tạo template automationtestver{N}-autotestasignees (2 đầu việc)
+Luồng: ADMIN tạo template automationtestver{N}_autotestasignees (2 đầu việc)
 → tạo checklist (NV: TK Chuyên Viên, CB: TK Trưởng phòng) → logout
 → OFFICER tìm đúng tên template → Pass nếu có kết quả.
 """
