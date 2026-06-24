@@ -119,8 +119,8 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "Không bấm được nút làm mới.",
     },
     "OFF-CFM-01": {
-        "passCondition": "Màn chi tiết có task với nút [Đúng hạn]/Xác nhận hoặc [Đổi CB]/Đổi cán bộ.",
-        "failCondition": "OFFICER không có instance để mở / không thấy thao tác task trên chi tiết.",
+        "passCondition": "Sau OFF-LST-01, OFFICER mở chi tiết checklist vừa tạo → có task theo section + nút [Đúng hạn]/Xác nhận hoặc [Đổi CB].",
+        "failCondition": "Không mở được chi tiết checklist OFF-LST-01 / không thấy thao tác task.",
     },
     "OFF-CFM-02": {
         "passCondition": "Bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận modal thành công (BR-01).",
