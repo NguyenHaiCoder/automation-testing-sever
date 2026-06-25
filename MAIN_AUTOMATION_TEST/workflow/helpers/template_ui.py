@@ -10,6 +10,45 @@ from workflow.helpers.outcome import fail_result, pass_result
 
 TEMPLATE_HEADERS = ["STT", "Mã template", "Tên template", "Mô tả", "Trạng thái", "Ngày tạo", "Chức năng"]
 
+# Tạo template — fill nhanh (tránh type từng ký tự delay=40)
+_TEMPLATE_INPUT_PAUSE_MS = 60
+
+
+def _read_input_value(inp: Locator) -> str:
+    try:
+        return inp.input_value().strip()
+    except Exception:
+        return (inp.get_attribute("value") or "").strip()
+
+
+def fill_input_verified(ctx: WorkflowContext, inp: Locator, value: str, label: str) -> bool:
+    """Điền input/textarea trong modal template — fill() trước, verify sau."""
+    expected = value.strip()
+    inp.scroll_into_view_if_needed()
+    inp.click(timeout=8000)
+    inp.fill(expected)
+    ctx.page.wait_for_timeout(_TEMPLATE_INPUT_PAUSE_MS)
+    if _read_input_value(inp) == expected:
+        return True
+    inp.click()
+    inp.fill("")
+    ctx.page.wait_for_timeout(40)
+    inp.fill(expected)
+    ctx.page.wait_for_timeout(_TEMPLATE_INPUT_PAUSE_MS)
+    actual = _read_input_value(inp)
+    if actual != expected:
+        ctx.log(f"{label}: gia tri khong khop — can [{expected}], co [{actual}]", "WARN")
+        return False
+    return True
+
+
+def wait_template_modal_saved(ctx: WorkflowContext, modal: Locator) -> None:
+    """Chờ modal đóng sau Lưu — nhanh hơn sleep cố định 3.5s."""
+    try:
+        modal.wait_for(state="hidden", timeout=6000)
+    except Exception:
+        ctx.page.wait_for_timeout(800)
+
 
 def template_row(ctx: WorkflowContext, name: str, code: str = "") -> Locator:
     rows = ctx.page.locator("tbody tr")

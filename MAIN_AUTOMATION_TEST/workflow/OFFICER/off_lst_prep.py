@@ -15,6 +15,7 @@ from workflow.helpers import template_ui as tpl
 
 DEFAULT_DURATION_DAYS = 7
 OFF_LST01_MARKER = "_off_lst01_template.txt"
+OVERDUE_START_DAYS_AGO = 14
 
 
 def next_assignees_template_name() -> str:
@@ -48,27 +49,7 @@ def resolve_lst01_search_keyword(ctx: WorkflowContext) -> str:
 
 
 def _fill_input_verified(ctx: WorkflowContext, inp: Locator, value: str, label: str) -> bool:
-    inp.scroll_into_view_if_needed()
-    inp.click(timeout=8000)
-    inp.fill("")
-    ctx.page.wait_for_timeout(350)
-    inp.type(value, delay=40)
-    ctx.page.wait_for_timeout(500)
-    try:
-        actual = inp.input_value().strip()
-    except Exception:
-        actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        inp.fill(value)
-        ctx.page.wait_for_timeout(500)
-        try:
-            actual = inp.input_value().strip()
-        except Exception:
-            actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        ctx.log(f"{label}: gia tri khong khop — can [{value}], co [{actual}]", "WARN")
-        return False
-    return True
+    return tpl.fill_input_verified(ctx, inp, value, label)
 
 
 def _fill_duration_days(ctx: WorkflowContext, modal: Locator, index: int, days: int) -> None:
@@ -96,11 +77,11 @@ def _assign_default_officer(ctx: WorkflowContext, modal: Locator, index: int, of
         return
     try:
         sel.click(timeout=5000)
-        ctx.page.wait_for_timeout(500)
+        ctx.page.wait_for_timeout(200)
         opt = ctx.page.locator(".ant-select-item-option-content").filter(has_text=officer_name).first
         if opt.count():
             opt.click(timeout=5000)
-            ctx.page.wait_for_timeout(400)
+            ctx.page.wait_for_timeout(150)
     except Exception:
         ctx.log(f"Khong gan duoc can bo mac dinh cho task #{index + 1}", "WARN")
 
@@ -149,7 +130,7 @@ def create_template_two_tasks(ctx: WorkflowContext, template_name: str, default_
     if not ui.click_button(ctx, "Thêm đầu việc"):
         ctx.log("Khong bam duoc Them dau viec", "WARN")
         return False
-    ctx.page.wait_for_timeout(900)
+    ctx.page.wait_for_timeout(300)
     if not _fill_task(ctx, modal, 1, section_name):
         return False
     _assign_default_officer(ctx, modal, 1, default_officer)
@@ -159,7 +140,7 @@ def create_template_two_tasks(ctx: WorkflowContext, template_name: str, default_
     if not submit.count():
         return False
     submit.click(timeout=8000)
-    ctx.page.wait_for_timeout(3500)
+    tpl.wait_template_modal_saved(ctx, modal)
     ui.shot(ctx, "officer_template_result")
 
     body = ctx.page.locator("body").inner_text().lower()
@@ -177,6 +158,8 @@ def create_checklist_instance(
     template_name: str,
     officer_name: str,
     employee_name: str,
+    *,
+    start_days_ago: int | None = None,
 ) -> bool:
     ui.goto_checklist_list(ctx)
     create_checklist.open_modal(ctx)
@@ -185,6 +168,7 @@ def create_checklist_instance(
         officer_name=officer_name,
         employee_name=employee_name,
         template_name=template_name,
+        start_days_ago=start_days_ago,
     ):
         create_checklist.close_modal(ctx)
         return False
@@ -194,6 +178,22 @@ def create_checklist_instance(
         return False
     ui.goto_checklist_list(ctx)
     return True
+
+
+def create_overdue_checklist_instance(
+    ctx: WorkflowContext,
+    template_name: str,
+    officer_name: str,
+    employee_name: str,
+) -> bool:
+    """Checklist có StartDate quá khứ → task quá Deadline (OFF-CFM-03 / EMP-CFM-02)."""
+    return create_checklist_instance(
+        ctx,
+        template_name,
+        officer_name,
+        employee_name,
+        start_days_ago=OVERDUE_START_DAYS_AGO,
+    )
 
 
 def list_shows_checklist(ctx: WorkflowContext, template_name: str) -> bool:

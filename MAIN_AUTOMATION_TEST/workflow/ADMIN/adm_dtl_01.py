@@ -26,27 +26,7 @@ def _fill_input_verified(
     value: str,
     label: str,
 ) -> bool:
-    inp.scroll_into_view_if_needed()
-    inp.click(timeout=8000)
-    inp.fill("")
-    ctx.page.wait_for_timeout(350)
-    inp.type(value, delay=40)
-    ctx.page.wait_for_timeout(500)
-    try:
-        actual = inp.input_value().strip()
-    except Exception:
-        actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        inp.fill(value)
-        ctx.page.wait_for_timeout(500)
-        try:
-            actual = inp.input_value().strip()
-        except Exception:
-            actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        ctx.log(f"{label}: gia tri khong khop — can [{value}], co [{actual}]", "WARN")
-        return False
-    return True
+    return tpl.fill_input_verified(ctx, inp, value, label)
 
 
 def _fill_template_section(
@@ -102,7 +82,7 @@ def _create_template(ctx: WorkflowContext, template_name: str, section_name: str
                 return False
             add_section.scroll_into_view_if_needed()
             add_section.click()
-            ctx.page.wait_for_timeout(1200)
+            ctx.page.wait_for_timeout(300)
             section_items = modal.locator(".ant-form-item").filter(has_text="Tên mục")
             try:
                 section_items.nth(i).wait_for(state="visible", timeout=8000)
@@ -112,14 +92,14 @@ def _create_template(ctx: WorkflowContext, template_name: str, section_name: str
 
         if not _fill_template_section(ctx, modal, i, section_name):
             return False
-        ctx.page.wait_for_timeout(500)
+        ctx.page.wait_for_timeout(150)
 
     ui.shot(ctx, "template_create_form")
     submit = modal.locator("button:has-text('Tạo'), button:has-text('Lưu')").first
     if not submit.count():
         return False
     submit.click(timeout=8000)
-    ctx.page.wait_for_timeout(3500)
+    tpl.wait_template_modal_saved(ctx, modal)
     ui.shot(ctx, "template_create_result")
     body = ctx.page.locator("body").inner_text().lower()
     return "thành công" in body or "thanh cong" in body or "/template" in ctx.page.url

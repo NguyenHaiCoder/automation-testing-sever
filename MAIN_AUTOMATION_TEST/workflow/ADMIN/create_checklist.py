@@ -155,9 +155,8 @@ def _select_random_template(ctx: WorkflowContext, modal) -> bool:
     return modal.is_visible()
 
 
-def _fill_start_date_today(ctx: WorkflowContext, modal) -> bool:
-    today = date.today()
-    date_str = today.strftime("%d/%m/%Y")
+def _fill_start_date(ctx: WorkflowContext, modal, on: date) -> bool:
+    date_str = on.strftime("%d/%m/%Y")
     picker = modal.locator(".ant-form-item").filter(has_text="Ngày bắt đầu").locator(".ant-picker").first
     if not picker.count():
         picker = modal.locator(".ant-picker").first
@@ -172,25 +171,18 @@ def _fill_start_date_today(ctx: WorkflowContext, modal) -> bool:
         inp.press("Tab")
         ctx.page.wait_for_timeout(600)
         _dismiss_layers(ctx, modal)
-        return True
-    today_cell = ctx.page.locator(
-        ".ant-picker-dropdown:not(.ant-picker-dropdown-hidden) .ant-picker-cell-today"
-    ).first
-    if today_cell.count():
-        today_cell.locator(".ant-picker-cell-inner").click(timeout=5000)
-        ctx.page.wait_for_timeout(500)
-        _dismiss_layers(ctx, modal)
-        return True
-    day_cell = ctx.page.locator(
-        f".ant-picker-dropdown:not(.ant-picker-dropdown-hidden) "
-        f".ant-picker-cell-in-view .ant-picker-cell-inner"
-    ).filter(has_text=str(today.day)).first
-    if day_cell.count():
-        day_cell.click(timeout=5000)
-        ctx.page.wait_for_timeout(500)
-        _dismiss_layers(ctx, modal)
+        try:
+            actual = inp.input_value().strip()
+            if actual and on.strftime("%d/%m/%Y") in actual or actual == date_str:
+                return True
+        except Exception:
+            pass
         return True
     return False
+
+
+def _fill_start_date_today(ctx: WorkflowContext, modal) -> bool:
+    return _fill_start_date(ctx, modal, date.today())
 
 
 def fill_form(
@@ -199,6 +191,7 @@ def fill_form(
     officer_name: str,
     employee_name: str,
     template_name: str | None = None,
+    start_days_ago: int | None = None,
 ) -> bool:
     modal = _modal(ctx)
     if modal.locator(".ant-select").count() < 3:
@@ -208,7 +201,13 @@ def fill_form(
             return False
     elif not _select_random_template(ctx, modal):
         return False
-    if not _fill_start_date_today(ctx, modal):
+    if start_days_ago is not None:
+        from datetime import timedelta
+
+        start = date.today() - timedelta(days=start_days_ago)
+        if not _fill_start_date(ctx, modal, start):
+            return False
+    elif not _fill_start_date_today(ctx, modal):
         return False
     _dismiss_layers(ctx, modal)
     officer_ok = _select_by_label(ctx, modal, "Cán bộ", officer_name) or _select_by_label(

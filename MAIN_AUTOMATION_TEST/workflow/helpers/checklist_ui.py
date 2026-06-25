@@ -567,9 +567,104 @@ def employee_two_line_format(ctx: WorkflowContext) -> bool:
     return bool(pairs) and all(f and a for f, a in pairs)
 
 
+def _row_has_tre_label(text: str) -> bool:
+    return "trễ" in text or bool(re.search(r"\d+\s*tr[ệe]", text, re.I))
+
+
+def _find_tre_row(ctx: WorkflowContext) -> Locator | None:
+    for row in data_table_rows(ctx):
+        try:
+            if _row_has_tre_label(row.inner_text()):
+                return row
+        except Exception:
+            continue
+    return None
+
+
+def _scroll_table_body(ctx: WorkflowContext) -> Locator | None:
+    """Cuộn `.ant-table-body` từng đoạn để tìm dòng có chữ trễ."""
+    body = ctx.page.locator(".ant-table-body").first
+    if not body.count():
+        return None
+    try:
+        metrics = body.evaluate(
+            """el => ({
+                scrollHeight: el.scrollHeight,
+                clientHeight: el.clientHeight,
+            })"""
+        )
+        scroll_height = int(metrics.get("scrollHeight") or 0)
+        client_height = int(metrics.get("clientHeight") or 0)
+        if scroll_height <= client_height + 4:
+            return _find_tre_row(ctx)
+
+        step = max(client_height // 2, 220)
+        pos = 0
+        while pos <= scroll_height:
+            body.evaluate("(el, y) => { el.scrollTop = y; }", pos)
+            ctx.page.wait_for_timeout(350)
+            row = _find_tre_row(ctx)
+            if row:
+                return row
+            pos += step
+
+        body.evaluate("(el) => { el.scrollTop = el.scrollHeight; }")
+        ctx.page.wait_for_timeout(400)
+        return _find_tre_row(ctx)
+    except Exception:
+        return None
+
+
+def scroll_to_tre_row(ctx: WorkflowContext) -> bool:
+    """
+    Cuộn bảng danh sách đến dòng có chữ «trễ» (scroll body + phân trang).
+    Dòng tìm thấy được scroll_into_view để chụp minh chứng đúng vị trí.
+    """
+    row = _find_tre_row(ctx)
+    if row:
+        row.scroll_into_view_if_needed()
+        ctx.page.wait_for_timeout(400)
+        return True
+
+    row = _scroll_table_body(ctx)
+    if row:
+        row.scroll_into_view_if_needed()
+        ctx.page.wait_for_timeout(400)
+        return True
+
+    for _ in range(25):
+        next_btn = ctx.page.locator(".ant-pagination-next:not(.ant-pagination-disabled)").first
+        if not next_btn.count():
+            break
+        try:
+            disabled = "ant-pagination-disabled" in (next_btn.get_attribute("class") or "")
+            if disabled or not next_btn.is_enabled():
+                break
+        except Exception:
+            break
+        next_btn.click(timeout=5000)
+        ctx.page.wait_for_timeout(1200)
+        row = _find_tre_row(ctx)
+        if row:
+            row.scroll_into_view_if_needed()
+            ctx.page.wait_for_timeout(400)
+            return True
+        row = _scroll_table_body(ctx)
+        if row:
+            row.scroll_into_view_if_needed()
+            ctx.page.wait_for_timeout(400)
+            return True
+
+    return False
+
+
+def list_shows_tre_label(ctx: WorkflowContext) -> bool:
+    """Danh sách checklist có nhãn trễ — cuộn bảng đến đúng dòng."""
+    return scroll_to_tre_row(ctx)
+
+
 def overdue_badge_visible(ctx: WorkflowContext) -> bool:
-    body = ctx.page.locator("tbody").inner_text()
-    return bool(re.search(r"\d+\s*trễ|overdue", body, re.I))
+    return list_shows_tre_label(ctx)
 
 
 def officer_cannot_access_template(ctx: WorkflowContext) -> dict:
@@ -586,10 +681,42 @@ def officer_cannot_access_template(ctx: WorkflowContext) -> dict:
     return pass_result("OFFICER khong thay noi dung template admin")
 
 
-def open_journal_modal(ctx: WorkflowContext) -> bool:
-    btn = ctx.page.locator("button:has-text('Nhật ký'), button:has-text('Nhat ky')").first
+def _task_journal_button(ctx: WorkflowContext, task_number: int | None = None) -> Locator | None:
+    buttons = ctx.page.locator("button:has-text('Nhật ký'), button:has-text('Nhat ky')")
+    if buttons.count() == 0:
+        return None
+    if task_number is None:
+        return buttons.first
+    for i in range(buttons.count()):
+        btn = buttons.nth(i)
+        try:
+            matched = btn.evaluate(
+                """(el, n) => {
+                    let cur = el;
+                    for (let i = 0; i < 15 && cur; i++) {
+                        if (new RegExp('task\\\\s*' + n + '\\\\b', 'i').test(cur.innerText || '')) {
+                            return true;
+                        }
+                        cur = cur.parentElement;
+                    }
+                    return false;
+                }""",
+                task_number,
+            )
+            if matched:
+                return btn
+        except Exception:
+            continue
+    return None
+
+
+def open_journal_modal(ctx: WorkflowContext, task_number: int | None = None) -> bool:
+    btn = _task_journal_button(ctx, task_number)
+    if btn is None or not btn.count():
+        btn = ctx.page.locator("button:has-text('Nhật ký'), button:has-text('Nhat ky')").first
     if not btn.count():
         return False
+    btn.scroll_into_view_if_needed()
     btn.click()
     ctx.page.wait_for_timeout(1500)
     shot(ctx, "journal_modal")
@@ -637,12 +764,85 @@ def journal_has_dated_entries(ctx: WorkflowContext) -> bool:
 
 def notice_texts(ctx: WorkflowContext) -> list[str]:
     chunks: list[str] = []
-    for sel in (".ant-message-notice", ".ant-notification-notice", ".ant-message-custom-content"):
+    try:
+        dom_texts = ctx.page.evaluate(
+            """() => {
+            const out = [];
+            const sels = [
+                '.ant-message-notice-content',
+                '.ant-message-custom-content',
+                '.ant-notification-notice-message',
+                '.ant-message-notice',
+                '.ant-message-notice-wrapper',
+                '.ant-message',
+            ];
+            for (const sel of sels) {
+                document.querySelectorAll(sel).forEach((el) => {
+                    const t = (el.innerText || '').trim();
+                    if (t) out.push(t);
+                });
+            }
+            return [...new Set(out)];
+        }"""
+        )
+        chunks.extend(dom_texts or [])
+    except Exception:
+        pass
+    selectors = (
+        ".ant-message-notice",
+        ".ant-message-notice-content",
+        ".ant-notification-notice",
+        ".ant-notification-notice-message",
+        ".ant-message-custom-content",
+        ".ant-message-error",
+    )
+    for sel in selectors:
         for text in ctx.page.locator(sel).all_inner_texts():
             t = text.strip()
-            if t:
+            if t and t not in chunks:
                 chunks.append(t)
     return chunks
+
+
+_ERROR_TOAST_NEEDLES = (
+    "lỗi",
+    "thất bại",
+    "that bai",
+    "không thành công",
+    "khong thanh cong",
+    "có lỗi",
+    "co loi",
+    "error",
+    "failed",
+)
+_SUCCESS_TOAST_NEEDLES = ("thành công", "thanh cong", "success")
+
+
+def wait_for_toast(ctx: WorkflowContext, *needles: str, timeout_ms: int = 8000) -> str | None:
+    """Chờ toast/notification chứa needle — không quét body (tránh false positive)."""
+    elapsed = 0
+    step = 300
+    while elapsed < timeout_ms:
+        for text in notice_texts(ctx):
+            low = text.lower()
+            for needle in needles:
+                if needle.lower() in low:
+                    return text
+        ctx.page.wait_for_timeout(step)
+        elapsed += step
+    return None
+
+
+def wait_for_error_toast(ctx: WorkflowContext, timeout_ms: int = 8000) -> str | None:
+    return wait_for_toast(ctx, *_ERROR_TOAST_NEEDLES, timeout_ms=timeout_ms)
+
+
+def wait_for_success_toast(ctx: WorkflowContext, timeout_ms: int = 6000) -> str | None:
+    return wait_for_toast(ctx, *_SUCCESS_TOAST_NEEDLES, timeout_ms=timeout_ms)
+
+
+def modal_is_visible(ctx: WorkflowContext) -> bool:
+    return ctx.page.locator(".ant-modal:visible").count() > 0
 
 
 def notice_contains(ctx: WorkflowContext, *needles: str) -> bool:
@@ -717,14 +917,196 @@ def task_action_visible(ctx: WorkflowContext, label: str) -> bool:
     return ctx.page.locator(f"button:has-text('{label}')").count() > 0
 
 
-def click_task_confirm_on_time(ctx: WorkflowContext) -> bool:
-    btn = ctx.page.locator("button:has-text('Đúng hạn')").first
-    if not btn.count():
+def _task_action_button(
+    ctx: WorkflowContext,
+    action_text: str,
+    task_number: int | None = None,
+) -> Locator | None:
+    buttons = ctx.page.locator(f"button:has-text('{action_text}')")
+    if buttons.count() == 0:
+        return None
+    if task_number is None:
+        return buttons.first
+    for i in range(buttons.count()):
+        btn = buttons.nth(i)
+        try:
+            matched = btn.evaluate(
+                """(el, n) => {
+                    let cur = el;
+                    for (let i = 0; i < 15 && cur; i++) {
+                        if (new RegExp('task\\\\s*' + n + '\\\\b', 'i').test(cur.innerText || '')) {
+                            return true;
+                        }
+                        cur = cur.parentElement;
+                    }
+                    return false;
+                }""",
+                task_number,
+            )
+            if matched:
+                return btn
+        except Exception:
+            continue
+    return None
+
+
+def _task_confirm_button(ctx: WorkflowContext, task_number: int | None = None) -> Locator | None:
+    return _task_action_button(ctx, "Đúng hạn", task_number)
+
+
+def _click_task_action(ctx: WorkflowContext, action_text: str, task_number: int | None = None) -> bool:
+    btn = _task_action_button(ctx, action_text, task_number)
+    if btn is None or not btn.count():
         return False
-    btn.click()
+    try:
+        btn.scroll_into_view_if_needed()
+        btn.click(timeout=10000)
+    except Exception:
+        return False
     ctx.page.wait_for_timeout(800)
     shot(ctx, "confirm_modal")
     return True
+
+
+def click_task_confirm_on_time(ctx: WorkflowContext, task_number: int | None = None) -> bool:
+    return _click_task_action(ctx, "Đúng hạn", task_number)
+
+
+def click_task_confirm_late(ctx: WorkflowContext, task_number: int | None = None) -> bool:
+    return _click_task_action(ctx, "Muộn", task_number)
+
+
+def click_task_change_officer(ctx: WorkflowContext, task_number: int | None = None) -> bool:
+    if _click_task_action(ctx, "Đổi CB", task_number):
+        return True
+    return _click_task_action(ctx, "Đổi cán bộ", task_number)
+
+
+def click_task_undo(ctx: WorkflowContext, task_number: int | None = None) -> bool:
+    if _click_task_action(ctx, "Hoàn tác", task_number):
+        return True
+    return _click_task_action(ctx, "Undo", task_number)
+
+
+def task_has_action(ctx: WorkflowContext, action_text: str, task_number: int) -> bool:
+    btn = _task_action_button(ctx, action_text, task_number)
+    return btn is not None and btn.count() > 0
+
+
+def confirm_undo_prompt(ctx: WorkflowContext) -> bool:
+    """Xác nhận popconfirm/modal sau khi bấm [Hoàn tác]."""
+    for sel in (
+        ".ant-popconfirm-buttons button.ant-btn-primary",
+        ".ant-popconfirm button:has-text('Xác nhận')",
+        ".ant-modal button:has-text('Xác nhận')",
+        ".ant-popconfirm button:has-text('OK')",
+    ):
+        btn = ctx.page.locator(sel).last
+        try:
+            if btn.count() and btn.is_visible():
+                btn.click(timeout=5000)
+                ctx.page.wait_for_timeout(300)
+                return True
+        except Exception:
+            continue
+    return False
+
+
+def submit_undo_action(ctx: WorkflowContext, shot_prefix: str) -> tuple[bool, str]:
+    """Poll toast sau khi xác nhận hoàn tác."""
+    seen_error = ""
+    for attempt in range(80):
+        for text in notice_texts(ctx):
+            kind = _toast_kind(text)
+            if kind == "error":
+                shot(ctx, f"{shot_prefix}_error_toast")
+                return False, text
+            if kind == "success":
+                shot(ctx, shot_prefix)
+                return True, text
+            if "lỗi" in text.lower() or "loi:" in text.lower() or "có lỗi" in text.lower():
+                seen_error = text
+
+        if seen_error:
+            shot(ctx, f"{shot_prefix}_error_toast")
+            return False, seen_error
+
+        if attempt >= 5:
+            tail = wait_for_success_toast(ctx, timeout_ms=200)
+            if tail:
+                shot(ctx, shot_prefix)
+                return True, tail
+
+        ctx.page.wait_for_timeout(100)
+
+    shot(ctx, shot_prefix)
+    return True, "Hoan tac — khong thay toast loi"
+
+
+def pick_random_select_option(ctx: WorkflowContext, *, exclude: set[str] | None = None) -> str | None:
+    """Chọn ngẫu nhiên 1 option đang hiển thị trên trang 1 dropdown Ant Design."""
+    import random
+
+    skip = {s.strip().lower() for s in (exclude or set()) if s and s.strip()}
+    options = ctx.page.locator(".ant-select-item-option-content")
+    choices: list[tuple[int, str]] = []
+    for i in range(options.count()):
+        try:
+            text = options.nth(i).inner_text().strip()
+        except Exception:
+            continue
+        if not text:
+            continue
+        low = text.lower()
+        if any(s in low or low in s for s in skip):
+            continue
+        choices.append((i, text))
+    if not choices:
+        return None
+    idx, label = random.choice(choices)
+    options.nth(idx).click(timeout=8000)
+    ctx.page.wait_for_timeout(300)
+    return label
+
+
+def submit_save_modal(ctx: WorkflowContext, shot_prefix: str) -> tuple[bool, str]:
+    """Bấm [Lưu]/[Xác nhận] trong modal đang mở — poll toast."""
+    modal = ctx.page.locator(".ant-modal:visible").last
+    modal.wait_for(state="visible", timeout=10000)
+    btn = modal.locator(
+        "button:has-text('Lưu'), button:has-text('Xác nhận'), button.ant-btn-primary"
+    ).last
+    btn.wait_for(state="visible", timeout=8000)
+    btn.click()
+
+    seen_error = ""
+    for attempt in range(80):
+        for text in notice_texts(ctx):
+            kind = _toast_kind(text)
+            if kind == "error":
+                shot(ctx, f"{shot_prefix}_error_toast")
+                return False, text
+            if kind == "success":
+                shot(ctx, shot_prefix)
+                return True, text
+            if "lỗi" in text.lower() or "loi:" in text.lower() or "có lỗi" in text.lower():
+                seen_error = text
+
+        if seen_error:
+            shot(ctx, f"{shot_prefix}_error_toast")
+            return False, seen_error
+
+        if not modal_is_visible(ctx) and attempt >= 3:
+            tail = wait_for_success_toast(ctx, timeout_ms=1200)
+            shot(ctx, shot_prefix)
+            return True, tail or "Luu thanh cong"
+
+        ctx.page.wait_for_timeout(100)
+
+    shot(ctx, f"{shot_prefix}_error_toast")
+    if modal_is_visible(ctx):
+        return False, "Luu that bai — modal van mo, khong co toast thanh cong"
+    return False, "Khong xac dinh duoc ket qua luu"
 
 
 def fill_modal_text(ctx: WorkflowContext, text: str) -> None:
@@ -739,17 +1121,105 @@ def fill_modal_text(ctx: WorkflowContext, text: str) -> None:
     ctx.page.wait_for_timeout(400)
 
 
-def confirm_modal(ctx: WorkflowContext) -> None:
+def _fill_modal_input(inp: Locator, text: str) -> None:
+    inp.wait_for(state="visible", timeout=8000)
+    inp.click()
+    inp.fill("")
+    inp.page.wait_for_timeout(200)
+    inp.fill(text)
+    inp.page.wait_for_timeout(300)
+
+
+def fill_late_confirm_modal(ctx: WorkflowContext, note: str, reason: str | None = None) -> None:
+    """
+    Modal [Muộn]: điền [Ghi chú / Minh chứng] + [Lý do xác nhận muộn] (bắt buộc).
+    """
+    late_reason = reason or note
+    modal = ctx.page.locator(".ant-modal:visible").last
+    modal.wait_for(state="visible", timeout=10000)
+
+    late_item = modal.locator(".ant-form-item").filter(
+        has_text=re.compile(r"Lý do.*muộn|ly do.*muon", re.I)
+    )
+    if late_item.count():
+        late_inp = late_item.first.locator("textarea, input[type='text']").first
+        if late_inp.count():
+            _fill_modal_input(late_inp, late_reason)
+
+    note_item = modal.locator(".ant-form-item").filter(
+        has_text=re.compile(r"Ghi chú|Minh chứng|ghi chu|minh chung", re.I)
+    )
+    if note_item.count():
+        note_inp = note_item.first.locator("textarea, input[type='text']").first
+        if note_inp.count():
+            _fill_modal_input(note_inp, note)
+
+    textareas = modal.locator("textarea")
+    if textareas.count() >= 2 and not late_item.count():
+        _fill_modal_input(textareas.nth(0), note)
+        _fill_modal_input(textareas.nth(1), late_reason)
+    elif textareas.count() == 1 and not late_item.count():
+        _fill_modal_input(textareas.first, late_reason)
+
+    ctx.page.wait_for_timeout(400)
+
+
+def _toast_kind(text: str) -> str | None:
+    low = text.lower()
+    if any(n in low for n in _ERROR_TOAST_NEEDLES):
+        return "error"
+    if any(n in low for n in _SUCCESS_TOAST_NEEDLES):
+        return "success"
+    return None
+
+
+def submit_confirm_modal(ctx: WorkflowContext, shot_prefix: str) -> tuple[bool, str]:
+    """
+    Bấm [Xác nhận] trong modal đang mở — poll toast ngay (toast lỗi tự ẩn nhanh).
+    Trả về (ok, message).
+    """
     modal = ctx.page.locator(".ant-modal:visible").last
     modal.wait_for(state="visible", timeout=10000)
     btn = modal.locator("button:has-text('Xác nhận'), button.ant-btn-primary").last
     btn.wait_for(state="visible", timeout=8000)
     btn.click()
-    try:
-        modal.wait_for(state="hidden", timeout=12000)
-    except Exception:
-        ctx.page.wait_for_timeout(2000)
-    shot(ctx, "after_confirm")
+
+    seen_error = ""
+    for attempt in range(80):
+        for text in notice_texts(ctx):
+            kind = _toast_kind(text)
+            if kind == "error":
+                shot(ctx, f"{shot_prefix}_error_toast")
+                return False, text
+            if kind == "success":
+                shot(ctx, shot_prefix)
+                return True, text
+            if "lỗi" in text.lower() or "loi:" in text.lower() or "có lỗi" in text.lower():
+                seen_error = text
+
+        if seen_error:
+            shot(ctx, f"{shot_prefix}_error_toast")
+            return False, seen_error
+
+        if not modal_is_visible(ctx) and attempt >= 3:
+            tail = wait_for_success_toast(ctx, timeout_ms=1200)
+            shot(ctx, shot_prefix)
+            return True, tail or "Xac nhan thanh cong"
+
+        if attempt in (3, 8, 15) and modal_is_visible(ctx):
+            shot(ctx, "after_confirm")
+
+        ctx.page.wait_for_timeout(100)
+
+    shot(ctx, f"{shot_prefix}_error_toast")
+    if modal_is_visible(ctx):
+        return False, "Xac nhan that bai — modal van mo, khong co toast thanh cong"
+    return False, "Khong xac dinh duoc ket qua xac nhan"
+
+
+def confirm_modal(ctx: WorkflowContext) -> bool:
+    ok, _msg = submit_confirm_modal(ctx, "after_confirm")
+    return ok
 
 
 def confirm_cancel_checklist_modal(ctx: WorkflowContext) -> None:

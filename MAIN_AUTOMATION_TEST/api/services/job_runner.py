@@ -150,8 +150,8 @@ def _build_job_command(mode: str, visible: bool, case_ids: list[str] | None = No
         if mode == "cases":
             ids = ",".join(case_ids or [])
             args = [exe, "cases", "--cases", ids]
-            if visible:
-                args.append("--visible")
+            if not visible:
+                args.append("--headless")
             return args, cwd
         args = [exe, "run"]
         if visible:
@@ -168,8 +168,8 @@ def _build_job_command(mode: str, visible: bool, case_ids: list[str] | None = No
             raise FileNotFoundError(f"Khong tim thay script: {CASES_SCRIPT}")
         ids = ",".join(case_ids or [])
         args = [_python(), str(CASES_SCRIPT), "--cases", ids]
-        if visible:
-            args.append("--visible")
+        if not visible:
+            args.append("--headless")
         return args, str(ROOT)
 
     if not E2E_SCRIPT.exists():

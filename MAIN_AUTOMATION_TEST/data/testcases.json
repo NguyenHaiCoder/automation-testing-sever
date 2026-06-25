@@ -145,24 +145,24 @@
       "dependence": "[ADM-LST-01]",
       "testData": "",
       "result": "Fail",
-      "testDate": "2026-06-23",
+      "testDate": "2026-06-24",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260623_153229",
+          "runId": "run_20260624_102603",
           "runType": "case-run",
           "rel": "ADM-LST-03/ADM-LST-03_calendar_range_selected.png",
           "name": "Chọn khoảng ngày"
         },
         {
-          "runId": "run_20260623_153229",
+          "runId": "run_20260624_102603",
           "runType": "case-run",
           "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
           "name": "Kết quả lọc theo ngày"
         },
         {
-          "runId": "run_20260623_153229",
+          "runId": "run_20260624_102603",
           "runType": "case-run",
           "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
           "name": "Bảng sau lọc ngày"
@@ -322,6 +322,34 @@
             },
             {
               "runId": "run_20260623_153229",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
+              "name": "Bảng sau lọc ngày"
+            }
+          ]
+        },
+        {
+          "runNumber": 8,
+          "runId": "run_20260624_102603",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Khong co dong nao co Tu ngay/Den ngay trong 01/06/2026–30/06/2026",
+          "images": [
+            {
+              "runId": "run_20260624_102603",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_range_selected.png",
+              "name": "Chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260624_102603",
+              "runType": "case-run",
+              "rel": "ADM-LST-03/ADM-LST-03_calendar_search_result.png",
+              "name": "Kết quả lọc theo ngày"
+            },
+            {
+              "runId": "run_20260624_102603",
               "runType": "case-run",
               "rel": "ADM-LST-03/ADM-LST-03_date_filter_result.png",
               "name": "Bảng sau lọc ngày"
@@ -1051,19 +1079,19 @@
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_101850",
+          "runId": "run_20260624_102534",
           "runType": "case-run",
           "rel": "ADM-INS-02/ADM-INS-02_search_filled.png",
           "name": "search filled"
         },
         {
-          "runId": "run_20260624_101850",
+          "runId": "run_20260624_102534",
           "runType": "case-run",
           "rel": "ADM-INS-02/ADM-INS-02_search_result.png",
           "name": "search result"
         },
         {
-          "runId": "run_20260624_101850",
+          "runId": "run_20260624_102534",
           "runType": "case-run",
           "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
           "name": "Kiểm tra danh sách sau tạo"
@@ -1154,6 +1182,34 @@
             },
             {
               "runId": "run_20260624_101850",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
+              "name": "Kiểm tra danh sách sau tạo"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260624_102534",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "Tim thay [Nguyễn Việt Hải] tren danh sach (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_102534",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_102534",
+              "runType": "case-run",
+              "rel": "ADM-INS-02/ADM-INS-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_102534",
               "runType": "case-run",
               "rel": "ADM-INS-02/ADM-INS-02_verify_create_list.png",
               "name": "Kiểm tra danh sách sau tạo"
@@ -3528,22 +3584,70 @@
       "expected": "1. Danh sách chỉ instance có task AssignedOfficerId = OFFICER hiện tại (BR-10)\n2. Không thấy instance không liên quan\n3. Không truy cập được template admin-only",
       "dependence": "OFFICER có task được giao trong ít nhất 1 instance",
       "testData": "",
-      "result": "Fail",
+      "result": "Pass",
       "testDate": "2026-06-24",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260624_105628",
           "runType": "case-run",
-          "rel": "OFF-LST-01/OFF-LST-01_list_page.png",
-          "name": "list page"
+          "rel": "OFF-LST-01/OFF-LST-01_admin_template_form.png",
+          "name": "admin template form"
         },
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260624_105628",
           "runType": "case-run",
-          "rel": "OFF-LST-01/OFF-LST-01_template_access_attempt.png",
-          "name": "template access attempt"
+          "rel": "OFF-LST-01/OFF-LST-01_admin_template_result.png",
+          "name": "admin template result"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_officer_search_result.png",
+          "name": "officer search result"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "rel": "OFF-LST-01/OFF-LST-01_user_menu_open.png",
+          "name": "Menu user header"
         }
       ],
       "evidenceRuns": [
@@ -3577,6 +3681,286 @@
               "name": "template access attempt"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260624_104930",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tim thay checklist [automationtestver14_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_form.png",
+              "name": "admin template form"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_result.png",
+              "name": "admin template result"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_officer_search_result.png",
+              "name": "officer search result"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_104930",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260624_105110",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tim thay checklist [automationtestver15_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_form.png",
+              "name": "admin template form"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_result.png",
+              "name": "admin template result"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_officer_search_result.png",
+              "name": "officer search result"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_105110",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260624_105419",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tim thay checklist [automationtestver17_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_form.png",
+              "name": "admin template form"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_result.png",
+              "name": "admin template result"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_officer_search_result.png",
+              "name": "officer search result"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_105419",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260624_105628",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tim thay checklist [automationtestver18_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_form.png",
+              "name": "admin template form"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_admin_template_result.png",
+              "name": "admin template result"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_officer_search_result.png",
+              "name": "officer search result"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_105628",
+              "runType": "case-run",
+              "rel": "OFF-LST-01/OFF-LST-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "OFFICER thấy danh sách checklist trong phạm vi task được giao (BR-10); không truy cập được màn template admin-only.",
@@ -3590,16 +3974,28 @@
       "expected": "1. Kết quả lọc trong phạm vi quyền OFFICER\n2. Chỉ record liên quan task của OFFICER",
       "dependence": "[OFF-LST-01]",
       "testData": "",
-      "result": "Fail",
+      "result": "Pass",
       "testDate": "2026-06-24",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260624_110621",
           "runType": "case-run",
           "rel": "OFF-LST-02/OFF-LST-02_search_filled.png",
           "name": "search filled"
+        },
+        {
+          "runId": "run_20260624_110621",
+          "runType": "case-run",
+          "rel": "OFF-LST-02/OFF-LST-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260624_110621",
+          "runType": "case-run",
+          "rel": "OFF-LST-02/OFF-LST-02_search_result_officer.png",
+          "name": "OFFICER — kết quả tìm kiếm"
         }
       ],
       "evidenceRuns": [
@@ -3627,6 +4023,34 @@
               "name": "search filled"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260624_110621",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tim thay record OFF-LST-01 [automationtestver18_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260624_110621",
+              "runType": "case-run",
+              "rel": "OFF-LST-02/OFF-LST-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_110621",
+              "runType": "case-run",
+              "rel": "OFF-LST-02/OFF-LST-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260624_110621",
+              "runType": "case-run",
+              "rel": "OFF-LST-02/OFF-LST-02_search_result_officer.png",
+              "name": "OFFICER — kết quả tìm kiếm"
+            }
+          ]
         }
       ],
       "passCondition": "Nhập keyword [test] + Tìm kiếm → danh sách cập nhật trong phạm vi quyền OFFICER.",
@@ -3641,12 +4065,24 @@
       "dependence": "[OFF-LST-01]",
       "testData": "",
       "result": "Fail",
-      "testDate": "2026-06-24",
+      "testDate": "2026-06-25",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260625_085229",
+          "runType": "case-run",
+          "rel": "OFF-LST-03/OFF-LST-03_calendar_range_selected.png",
+          "name": "Chọn khoảng ngày"
+        },
+        {
+          "runId": "run_20260625_085229",
+          "runType": "case-run",
+          "rel": "OFF-LST-03/OFF-LST-03_calendar_search_result.png",
+          "name": "Kết quả lọc theo ngày"
+        },
+        {
+          "runId": "run_20260625_085229",
           "runType": "case-run",
           "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
           "name": "OFFICER — bảng sau lọc ngày"
@@ -3672,6 +4108,62 @@
           "images": [
             {
               "runId": "run_20260624_092005",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
+              "name": "OFFICER — bảng sau lọc ngày"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260624_110648",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Fail",
+          "message": "Loc ngay OK nhung khong thay checklist OFF-LST-01 [automationtestver18_autotestasignees]",
+          "images": [
+            {
+              "runId": "run_20260624_110648",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_calendar_range_selected.png",
+              "name": "Chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260624_110648",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_calendar_search_result.png",
+              "name": "Kết quả lọc theo ngày"
+            },
+            {
+              "runId": "run_20260624_110648",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
+              "name": "OFFICER — bảng sau lọc ngày"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_085229",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Loc ngay OK nhung khong thay checklist OFF-LST-01 [automationtestver19_autotestasignees]",
+          "images": [
+            {
+              "runId": "run_20260625_085229",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_calendar_range_selected.png",
+              "name": "Chọn khoảng ngày"
+            },
+            {
+              "runId": "run_20260625_085229",
+              "runType": "case-run",
+              "rel": "OFF-LST-03/OFF-LST-03_calendar_search_result.png",
+              "name": "Kết quả lọc theo ngày"
+            },
+            {
+              "runId": "run_20260625_085229",
               "runType": "case-run",
               "rel": "OFF-LST-03/OFF-LST-03_date_filter_result_officer.png",
               "name": "OFFICER — bảng sau lọc ngày"
@@ -3752,16 +4244,64 @@
       "expected": "1. Hiển thị danh sách task theo section\n2. Task được giao có thể thao tác Xác nhận / Đổi cán bộ\n3. Có button [Xác nhận], [Đổi cán bộ] trên task",
       "dependence": "[OFF-LST-01]\nInstance có task pending cho OFFICER",
       "testData": "",
-      "result": "Fail",
+      "result": "Pass",
       "testDate": "2026-06-24",
       "note": "UC-03",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_detail_from_list_officer.png",
+          "name": "OFFICER mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260624_111417",
           "runType": "case-run",
           "rel": "OFF-CFM-01/OFF-CFM-01_officer_detail.png",
           "name": "officer detail"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "rel": "OFF-CFM-01/OFF-CFM-01_search_result.png",
+          "name": "search result"
         }
       ],
       "evidenceRuns": [
@@ -3789,6 +4329,104 @@
               "name": "officer detail"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260624_111122",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER mo chi tiet [automationtestver18_autotestasignees] — co task voi nut thao tac",
+          "images": [
+            {
+              "runId": "run_20260624_111122",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260624_111122",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260624_111122",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_111122",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260624_111417",
+          "runType": "case-run",
+          "testDate": "2026-06-24",
+          "result": "Pass",
+          "message": "OFFICER tu tao + mo chi tiet [automationtestver19_autotestasignees] — co task giao cho minh",
+          "images": [
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260624_111417",
+              "runType": "case-run",
+              "rel": "OFF-CFM-01/OFF-CFM-01_search_result.png",
+              "name": "search result"
+            }
+          ]
         }
       ],
       "passCondition": "Màn chi tiết có task với nút [Đúng hạn]/Xác nhận hoặc [Đổi CB]/Đổi cán bộ.",
@@ -3803,15 +4441,105 @@
       "dependence": "[OFF-CFM-01]\nTask trước Deadline",
       "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
       "result": "Fail",
-      "testDate": "2026-06-24",
+      "testDate": "2026-06-25",
       "note": "BR-01, UC-03 — chụp ảnh khi chạy automation",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+          "name": "after confirm"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+          "name": "OFFICER mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2_error_toast.png",
+          "name": "emp confirm task2 error toast"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+          "name": "employee detail"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+          "name": "off confirm task1"
+        },
+        {
+          "runId": "run_20260625_092942",
           "runType": "case-run",
           "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
           "name": "officer detail"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+          "name": "Menu user header"
         }
       ],
       "evidenceRuns": [
@@ -3839,6 +4567,642 @@
               "name": "officer detail"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_090416",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-02 OK — officer task 1 + employee task 2 [automationtestver20_autotestasignees] (BR-01)",
+          "images": [
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2.png",
+              "name": "emp confirm task2"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_090416",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_090931",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-02 OK — officer task 1 + employee task 2 [automationtestver21_autotestasignees] (BR-01)",
+          "images": [
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2.png",
+              "name": "emp confirm task2"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_090931",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260625_092002",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Toast loi sau xac nhan employee task 2",
+          "images": [
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2.png",
+              "name": "emp confirm task2"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_092002",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260625_092406",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "EMPLOYEE task 2 — Xac nhan that bai — modal van mo, khong co toast thanh cong",
+          "images": [
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2_error_toast.png",
+              "name": "emp confirm task2 error toast"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_092406",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 7,
+          "runId": "run_20260625_092730",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "EMPLOYEE task 2 — Xac nhan that bai — modal van mo, khong co toast thanh cong",
+          "images": [
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2_error_toast.png",
+              "name": "emp confirm task2 error toast"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_092730",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
+        },
+        {
+          "runNumber": 8,
+          "runId": "run_20260625_092942",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "EMPLOYEE task 2 — Xac nhan that bai — modal van mo, khong co toast thanh cong",
+          "images": [
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_emp_confirm_task2_error_toast.png",
+              "name": "emp confirm task2 error toast"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_off_confirm_task1.png",
+              "name": "off confirm task1"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_092942",
+              "runType": "case-run",
+              "rel": "OFF-CFM-02/OFF-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "Bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận modal thành công (BR-01).",
@@ -3852,16 +5216,82 @@
       "expected": "1. OfficerStatus = Late (3)\n2. OfficerLateReason bắt buộc (BR-03)\n3. Ghi log OfficerConfirmLate",
       "dependence": "[OFF-CFM-01]\nTask quá Deadline",
       "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
-      "result": "Fail",
-      "testDate": "2026-06-24",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "BR-03",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_detail_from_list_officer.png",
+          "name": "OFFICER mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_late_confirm_modal.png",
+          "name": "OFFICER — modal xác nhận muộn"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_off_confirm_late.png",
+          "name": "off confirm late"
+        },
+        {
+          "runId": "run_20260625_095258",
           "runType": "case-run",
           "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
           "name": "officer detail"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "rel": "OFF-CFM-03/OFF-CFM-03_search_result.png",
+          "name": "search result"
         }
       ],
       "evidenceRuns": [
@@ -3889,6 +5319,352 @@
               "name": "officer detail"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_093815",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "OFFICER xac nhan muon task 1 — Xac nhan that bai — modal van mo, khong co toast thanh cong",
+          "images": [
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_off_confirm_late_error_toast.png",
+              "name": "off confirm late error toast"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_093815",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_093933",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "OFFICER xac nhan muon task 1 — Xac nhan that bai — modal van mo, khong co toast thanh cong",
+          "images": [
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_off_confirm_late_error_toast.png",
+              "name": "off confirm late error toast"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_093933",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260625_094222",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-03 OK — officer [Muon] task 1 [automationtestver29_autotestasignees] (BR-03)",
+          "images": [
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_off_confirm_late.png",
+              "name": "off confirm late"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_094222",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 6,
+          "runId": "run_20260625_095258",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-03 OK — officer [Muon] task 1 [automationtestver31_autotestasignees] (BR-03)",
+          "images": [
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_off_confirm_late.png",
+              "name": "off confirm late"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_095258",
+              "runType": "case-run",
+              "rel": "OFF-CFM-03/OFF-CFM-03_search_result.png",
+              "name": "search result"
+            }
+          ]
         }
       ],
       "passCondition": "Task quá hạn: bấm [Muộn] → nhập lý do → Xác nhận (BR-03).",
@@ -3902,16 +5678,100 @@
       "expected": "1. AssignedOfficerId đổi thành công (BR-04)\n2. Ghi log ChangeOfficer\n3. Notify OFFICER mới",
       "dependence": "[OFF-CFM-01]\nTask chưa officer confirm",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-24",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "UC-05, BR-04",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_modal.png",
+          "name": "change officer modal"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_selected.png",
+          "name": "change officer selected"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_task2.png",
+          "name": "change officer task2"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_detail_from_list_officer.png",
+          "name": "OFFICER mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_late_confirm_modal.png",
+          "name": "OFFICER — modal xác nhận muộn"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_off_confirm_late_task1.png",
+          "name": "off confirm late task1"
+        },
+        {
+          "runId": "run_20260625_100044",
           "runType": "case-run",
           "rel": "OFF-CFM-04/OFF-CFM-04_officer_detail.png",
           "name": "officer detail"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "rel": "OFF-CFM-04/OFF-CFM-04_search_result.png",
+          "name": "search result"
         }
       ],
       "evidenceRuns": [
@@ -3939,6 +5799,212 @@
               "name": "officer detail"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_100018",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-04 OK — task 1 [Muon] + task 2 [Doi CB] → [Phạm Quốc Huy] [automationtestver32_autotestasignees] (BR-04)",
+          "images": [
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_after_confirm.png",
+              "name": "after confirm"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_modal.png",
+              "name": "change officer modal"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_selected.png",
+              "name": "change officer selected"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_task2.png",
+              "name": "change officer task2"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_off_confirm_late_task1.png",
+              "name": "off confirm late task1"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_100018",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_search_result.png",
+              "name": "search result"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_100044",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-04 OK — task 1 [Muon] + task 2 [Doi CB] → [Phạm Quốc Huy] [automationtestver33_autotestasignees] (BR-04)",
+          "images": [
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_modal.png",
+              "name": "change officer modal"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_selected.png",
+              "name": "change officer selected"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_change_officer_task2.png",
+              "name": "change officer task2"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_off_confirm_late_task1.png",
+              "name": "off confirm late task1"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_100044",
+              "runType": "case-run",
+              "rel": "OFF-CFM-04/OFF-CFM-04_search_result.png",
+              "name": "search result"
+            }
+          ]
         }
       ],
       "passCondition": "Flow [Đổi cán bộ] mở modal, chọn cán bộ mới và Lưu (BR-04).",
@@ -3952,16 +6018,100 @@
       "expected": "1. OfficerStatus = Undone (2) hoặc về Pending\n2. canOfficerUndo = true khi trong 60' và employee chưa confirm (BR-02)\n3. Sau employee confirm → không undo được",
       "dependence": "[OFF-CFM-02]\nEmployeeStatus = 0, trong 60 phút",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-24",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "BR-02",
       "evidence": "",
       "evidenceImages": [
         {
-          "runId": "run_20260624_092005",
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_detail_from_list_officer.png",
+          "name": "OFFICER mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_late_confirm_modal.png",
+          "name": "OFFICER — modal xác nhận muộn"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_off_confirm_late_task1.png",
+          "name": "off confirm late task1"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_off_undo_task1.png",
+          "name": "off undo task1"
+        },
+        {
+          "runId": "run_20260625_100517",
           "runType": "case-run",
           "rel": "OFF-CFM-05/OFF-CFM-05_officer_detail.png",
           "name": "officer detail"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_undo_confirm_prompt.png",
+          "name": "undo confirm prompt"
+        },
+        {
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "rel": "OFF-CFM-05/OFF-CFM-05_undo_result.png",
+          "name": "OFFICER — kết quả hoàn tác"
         }
       ],
       "evidenceRuns": [
@@ -3989,6 +6139,106 @@
               "name": "officer detail"
             }
           ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_100517",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "OFF-CFM-05 OK — task 1 [Muon] → [Hoan tac] [automationtestver34_autotestasignees] (BR-02)",
+          "images": [
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_detail_from_list_officer.png",
+              "name": "OFFICER mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_late_confirm_modal.png",
+              "name": "OFFICER — modal xác nhận muộn"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_off_confirm_late_task1.png",
+              "name": "off confirm late task1"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_off_undo_task1.png",
+              "name": "off undo task1"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_officer_detail.png",
+              "name": "officer detail"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_undo_confirm_prompt.png",
+              "name": "undo confirm prompt"
+            },
+            {
+              "runId": "run_20260625_100517",
+              "runType": "case-run",
+              "rel": "OFF-CFM-05/OFF-CFM-05_undo_result.png",
+              "name": "OFFICER — kết quả hoàn tác"
+            }
+          ]
         }
       ],
       "passCondition": "Nút [Hoàn tác] undo xác nhận officer trong cửa sổ 60 phút (BR-02).",
@@ -4002,11 +6252,90 @@
       "expected": "1. Chỉ instance có EmployeeId = user hiện tại (BR-10)\n2. Không thấy checklist nhân viên khác",
       "dependence": "EMPLOYEE có ít nhất 1 instance",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_case_result.png",
+          "name": "Kết quả case (fallback)"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_employee_list_page.png",
+          "name": "employee list page"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_employee_list_search.png",
+          "name": "employee list search"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_officer_create_checklist_result.png",
+          "name": "officer create checklist result"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "rel": "EMP-LST-01/EMP-LST-01_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4016,6 +6345,160 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_101658",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "OFFICER khong assign duoc checklist cho [TK Chuyên Viên] (ngay hom nay)",
+          "images": [
+            {
+              "runId": "run_20260625_101658",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_101658",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_create_result.png",
+              "name": "officer create result"
+            },
+            {
+              "runId": "run_20260625_101658",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_101658",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_template_result.png",
+              "name": "officer template result"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_102312",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Dang nhap ADMIN that bai",
+          "images": [
+            {
+              "runId": "run_20260625_102312",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_102340",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Dang nhap ADMIN that bai",
+          "images": [
+            {
+              "runId": "run_20260625_102340",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_error.png",
+              "name": "Lỗi trong quá trình chạy"
+            }
+          ]
+        },
+        {
+          "runNumber": 5,
+          "runId": "run_20260625_102424",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-LST-01 OK — OFF tao checklist [automationtestver38_autotestasignees] → EMP thay (1 dong) — BR-10",
+          "images": [
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_employee_list_page.png",
+              "name": "employee list page"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_employee_list_search.png",
+              "name": "employee list search"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_create_checklist_result.png",
+              "name": "officer create checklist result"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_102424",
+              "runType": "case-run",
+              "rel": "EMP-LST-01/EMP-LST-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "EMPLOYEE thấy ≥1 dòng checklist của bản thân (BR-10).",
@@ -4029,11 +6512,78 @@
       "expected": "1. Kết quả trong phạm vi instance của EMPLOYEE",
       "dependence": "[EMP-LST-01]",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_case_result.png",
+          "name": "Kết quả case (fallback)"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_employee_list_page.png",
+          "name": "employee list page"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "rel": "EMP-LST-02/EMP-LST-02_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4043,6 +6593,114 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_103132",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Chua co checklist EMP-LST-01 — chay EMP-LST-01 truoc",
+          "images": [
+            {
+              "runId": "run_20260625_103132",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_employee_list_page.png",
+              "name": "employee list page"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_103140",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Chua co checklist EMP-LST-01 — chay EMP-LST-01 truoc",
+          "images": [
+            {
+              "runId": "run_20260625_103140",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_employee_list_page.png",
+              "name": "employee list page"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_103337",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-LST-02 OK — EMPLOYEE tim thay [automationtestver39_autotestasignees] (1 dong)",
+          "images": [
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_employee_list_page.png",
+              "name": "employee list page"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_103337",
+              "runType": "case-run",
+              "rel": "EMP-LST-02/EMP-LST-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "Tìm keyword [test] trong phạm vi checklist của EMPLOYEE.",
@@ -4056,11 +6714,24 @@
       "expected": "1. Hiển thị badge/số overdueTaskCount > 0\n2. Instance không overdue không hiển thị badge (hoặc = 0)",
       "dependence": "[EMP-LST-01]\nInstance có task overdue",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "overdue badge — explore sample: 2 trễ",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_104111",
+          "runType": "case-run",
+          "rel": "EMP-LST-03/EMP-LST-03_case_result.png",
+          "name": "Kết quả case (fallback)"
+        },
+        {
+          "runId": "run_20260625_104111",
+          "runType": "case-run",
+          "rel": "EMP-LST-03/EMP-LST-03_overdue_tre_row_employee.png",
+          "name": "overdue tre row employee"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4070,6 +6741,50 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_103738",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-LST-03 OK — [EMPLOYEE] thay chu 'tre' tren danh sach checklist",
+          "images": [
+            {
+              "runId": "run_20260625_103738",
+              "runType": "case-run",
+              "rel": "EMP-LST-03/EMP-LST-03_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260625_103738",
+              "runType": "case-run",
+              "rel": "EMP-LST-03/EMP-LST-03_overdue_list_employee.png",
+              "name": "overdue list employee"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_104111",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-LST-03 OK — [EMPLOYEE] cuon den dong co chu 'tre' tren danh sach",
+          "images": [
+            {
+              "runId": "run_20260625_104111",
+              "runType": "case-run",
+              "rel": "EMP-LST-03/EMP-LST-03_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260625_104111",
+              "runType": "case-run",
+              "rel": "EMP-LST-03/EMP-LST-03_overdue_tre_row_employee.png",
+              "name": "overdue tre row employee"
+            }
+          ]
         }
       ],
       "passCondition": "Danh sách hiển thị badge/tag overdue (task trễ) trên ít nhất 1 dòng.",
@@ -4083,11 +6798,18 @@
       "expected": "1. Mở đúng instance của EMPLOYEE\n2. Hiển thị task cần xác nhận",
       "dependence": "[EMP-LST-01]",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_104018",
+          "runType": "case-run",
+          "rel": "EMP-LST-04/EMP-LST-04_detail_from_list_employee.png",
+          "name": "EMPLOYEE mở chi tiết từ danh sách"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4097,6 +6819,22 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_104018",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "Mo chi tiet checklist cua EMPLOYEE",
+          "images": [
+            {
+              "runId": "run_20260625_104018",
+              "runType": "case-run",
+              "rel": "EMP-LST-04/EMP-LST-04_detail_from_list_employee.png",
+              "name": "EMPLOYEE mở chi tiết từ danh sách"
+            }
+          ]
         }
       ],
       "passCondition": "Mở dòng danh sách → chi tiết checklist; URL /hrm/checklist/{id}.",
@@ -4110,11 +6848,108 @@
       "expected": "1. Employee confirm thành công dù officer chưa confirm (BR-01)\n2. EmployeeStatus = Confirmed (1)\n3. Ảnh minh chứng lưu vào ô [Minh chứng]",
       "dependence": "[EMP-LST-04]\nTask employee pending, officer chưa confirm",
       "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "BR-01, UC-04",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_detail_from_list_employee.png",
+          "name": "EMPLOYEE mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_modal.png",
+          "name": "emp confirm modal"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_on_time.png",
+          "name": "emp confirm on time"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_result.png",
+          "name": "EMPLOYEE xác nhận task"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_employee_detail.png",
+          "name": "employee detail"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_officer_create_checklist_result.png",
+          "name": "officer create checklist result"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "rel": "EMP-CFM-01/EMP-CFM-01_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4124,6 +6959,112 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_104911",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-CFM-01 OK — EMP [task 1] [Dung han] truoc officer [automationtestver40_autotestasignees] (BR-01)",
+          "images": [
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_detail_from_list_employee.png",
+              "name": "EMPLOYEE mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_modal.png",
+              "name": "emp confirm modal"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_on_time.png",
+              "name": "emp confirm on time"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_emp_confirm_result.png",
+              "name": "EMPLOYEE xác nhận task"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_officer_create_checklist_result.png",
+              "name": "officer create checklist result"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_104911",
+              "runType": "case-run",
+              "rel": "EMP-CFM-01/EMP-CFM-01_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "EMPLOYEE bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận (BR-01, không cần officer trước).",
@@ -4137,11 +7078,108 @@
       "expected": "1. EmployeeStatus = Late (3)\n2. EmployeeLateReason bắt buộc (BR-03)",
       "dependence": "[EMP-LST-04]\nTask quá Deadline",
       "testData": "Text field: automationtestver{N} (lần chạy 1 → ver1, lần 2 → ver2, cứ thế +1). Trường số: nhập số hợp lệ bình thường.",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "BR-03",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_detail_from_list_employee.png",
+          "name": "EMPLOYEE mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_emp_confirm_late.png",
+          "name": "emp confirm late"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_emp_confirm_result.png",
+          "name": "EMPLOYEE xác nhận task"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_emp_late_modal.png",
+          "name": "emp late modal"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_employee_detail.png",
+          "name": "employee detail"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_officer_create_overdue_result.png",
+          "name": "officer create overdue result"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "rel": "EMP-CFM-02/EMP-CFM-02_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4151,6 +7189,112 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_105210",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-CFM-02 OK — EMP [task 1] [Muon] [automationtestver41_autotestasignees] (BR-03)",
+          "images": [
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_detail_from_list_employee.png",
+              "name": "EMPLOYEE mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_emp_confirm_late.png",
+              "name": "emp confirm late"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_emp_confirm_result.png",
+              "name": "EMPLOYEE xác nhận task"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_emp_late_modal.png",
+              "name": "emp late modal"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_officer_create_overdue_result.png",
+              "name": "officer create overdue result"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_105210",
+              "runType": "case-run",
+              "rel": "EMP-CFM-02/EMP-CFM-02_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "Task quá hạn: [Muộn] → lý do → Xác nhận (BR-03).",
@@ -4164,11 +7308,132 @@
       "expected": "1. Nhật ký hiển thị đúng\n2. Quay về [Danh sách checklist] thành công",
       "dependence": "[EMP-LST-04]",
       "testData": "",
-      "result": "Fail",
-      "testDate": "2026-06-23",
+      "result": "Pass",
+      "testDate": "2026-06-25",
       "note": "Explore: run_23-06-2026_12-53-02",
       "evidence": "",
-      "evidenceImages": [],
+      "evidenceImages": [
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_after_logout.png",
+          "name": "Sau đăng xuất"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_after_quay_lai.png",
+          "name": "Sau Quay lại danh sách"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_case_result.png",
+          "name": "Kết quả case (fallback)"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_confirm_modal.png",
+          "name": "confirm modal"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_create_checklist_modal.png",
+          "name": "create checklist modal"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_create_filled.png",
+          "name": "create filled"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_create_result.png",
+          "name": "create result"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_detail_from_list_employee.png",
+          "name": "EMPLOYEE mở chi tiết từ danh sách"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_emp_confirm_late.png",
+          "name": "emp confirm late"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_emp_confirm_result.png",
+          "name": "EMPLOYEE xác nhận task"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_emp_late_modal.png",
+          "name": "emp late modal"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_employee_detail.png",
+          "name": "employee detail"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_journal_closed.png",
+          "name": "journal closed"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_journal_modal.png",
+          "name": "Modal nhật ký checklist"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_officer_create_overdue_result.png",
+          "name": "officer create overdue result"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_officer_template_form.png",
+          "name": "officer template form"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_officer_template_result.png",
+          "name": "officer template result"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_search_filled.png",
+          "name": "search filled"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_search_result.png",
+          "name": "search result"
+        },
+        {
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "rel": "EMP-CFM-03/EMP-CFM-03_user_menu_open.png",
+          "name": "Menu user header"
+        }
+      ],
       "evidenceRuns": [
         {
           "runNumber": 1,
@@ -4178,6 +7443,168 @@
           "result": "Fail",
           "message": "Page.goto: Target page, context or browser has been closed",
           "images": []
+        },
+        {
+          "runNumber": 2,
+          "runId": "run_20260625_105617",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Chua co checklist EMP-CFM-02 — chay EMP-CFM-02 truoc (can [Muon] de co nhat ky)",
+          "images": [
+            {
+              "runId": "run_20260625_105617",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_employee_list_page.png",
+              "name": "employee list page"
+            }
+          ]
+        },
+        {
+          "runNumber": 3,
+          "runId": "run_20260625_105624",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Fail",
+          "message": "Chua co checklist EMP-CFM-02 — chay EMP-CFM-02 truoc (can [Muon] de co nhat ky)",
+          "images": [
+            {
+              "runId": "run_20260625_105624",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_employee_list_page.png",
+              "name": "employee list page"
+            }
+          ]
+        },
+        {
+          "runNumber": 4,
+          "runId": "run_20260625_105812",
+          "runType": "case-run",
+          "testDate": "2026-06-25",
+          "result": "Pass",
+          "message": "EMP-CFM-03 OK — [Nhat ky] task 1 [automationtestver42_autotestasignees] (3 dong) + [Quay lai]",
+          "images": [
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_after_logout.png",
+              "name": "Sau đăng xuất"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_after_quay_lai.png",
+              "name": "Sau Quay lại danh sách"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_case_result.png",
+              "name": "Kết quả case (fallback)"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_confirm_modal.png",
+              "name": "confirm modal"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_create_checklist_modal.png",
+              "name": "create checklist modal"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_create_filled.png",
+              "name": "create filled"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_create_result.png",
+              "name": "create result"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_detail_from_list_employee.png",
+              "name": "EMPLOYEE mở chi tiết từ danh sách"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_emp_confirm_late.png",
+              "name": "emp confirm late"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_emp_confirm_result.png",
+              "name": "EMPLOYEE xác nhận task"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_emp_late_modal.png",
+              "name": "emp late modal"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_employee_detail.png",
+              "name": "employee detail"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_journal_closed.png",
+              "name": "journal closed"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_journal_modal.png",
+              "name": "Modal nhật ký checklist"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_officer_create_overdue_result.png",
+              "name": "officer create overdue result"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_officer_template_form.png",
+              "name": "officer template form"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_officer_template_result.png",
+              "name": "officer template result"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_search_filled.png",
+              "name": "search filled"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_search_result.png",
+              "name": "search result"
+            },
+            {
+              "runId": "run_20260625_105812",
+              "runType": "case-run",
+              "rel": "EMP-CFM-03/EMP-CFM-03_user_menu_open.png",
+              "name": "Menu user header"
+            }
+          ]
         }
       ],
       "passCondition": "Mở [Nhật ký] từ chi tiết + [Quay lại] về danh sách.",
@@ -4400,12 +7827,12 @@
   "sourceExploreRun": "run_23-06-2026_12-53-02",
   "generatedAt": "2026-06-23T13:34:49",
   "stats": {
-    "pass": 21,
-    "fail": 21,
+    "pass": 34,
+    "fail": 8,
     "untested": 5,
     "na": 0,
     "total": 47
   },
-  "updatedAt": "2026-06-24T10:19:06",
+  "updatedAt": "2026-06-25T10:59:54",
   "exportedAt": "2026-06-23T13:34:49"
 }

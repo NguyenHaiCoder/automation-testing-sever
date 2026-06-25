@@ -20,27 +20,7 @@ def _fill_input_verified(
     value: str,
     label: str,
 ) -> bool:
-    inp.scroll_into_view_if_needed()
-    inp.click(timeout=8000)
-    inp.fill("")
-    ctx.page.wait_for_timeout(350)
-    inp.type(value, delay=40)
-    ctx.page.wait_for_timeout(500)
-    try:
-        actual = inp.input_value().strip()
-    except Exception:
-        actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        inp.fill(value)
-        ctx.page.wait_for_timeout(500)
-        try:
-            actual = inp.input_value().strip()
-        except Exception:
-            actual = (inp.get_attribute("value") or "").strip()
-    if actual != value.strip():
-        ctx.log(f"{label}: gia tri khong khop — can [{value}], co [{actual}]", "WARN")
-        return False
-    return True
+    return tpl.fill_input_verified(ctx, inp, value, label)
 
 
 def _fill_duration_days(ctx: WorkflowContext, modal: Locator, index: int, days: int) -> None:
@@ -68,11 +48,11 @@ def _assign_default_officer(ctx: WorkflowContext, modal: Locator, index: int) ->
         return
     try:
         sel.click(timeout=5000)
-        ctx.page.wait_for_timeout(500)
+        ctx.page.wait_for_timeout(200)
         opt = ctx.page.locator(".ant-select-item-option-content").filter(has_text=DEFAULT_OFFICER).first
         if opt.count():
             opt.click(timeout=5000)
-            ctx.page.wait_for_timeout(400)
+            ctx.page.wait_for_timeout(150)
     except Exception:
         ctx.log(f"Khong gan duoc can bo mac dinh cho task #{index + 1}", "WARN")
 
@@ -127,7 +107,7 @@ def create_template(ctx: WorkflowContext, template_name: str) -> bool:
     if not submit.count():
         return False
     submit.click(timeout=8000)
-    ctx.page.wait_for_timeout(3500)
+    tpl.wait_template_modal_saved(ctx, modal)
     ui.shot(ctx, "template_create_result")
 
     body = ctx.page.locator("body").inner_text().lower()

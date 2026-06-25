@@ -123,48 +123,48 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "OFFICER không tạo được template/checklist / không mở chi tiết / không thấy thao tác task.",
     },
     "OFF-CFM-02": {
-        "passCondition": "Bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận modal thành công (BR-01).",
-        "failCondition": "Không có chi tiết / không thấy nút Đúng hạn.",
+        "passCondition": "OFFICER [Đúng hạn] task 1 + EMPLOYEE [Đúng hạn] task 2 — cả hai toast thành công, modal đóng (BR-01).",
+        "failCondition": "Toast lỗi khi xác nhận (vd. không có quyền) / modal không đóng / không thấy nút Đúng hạn.",
     },
     "OFF-CFM-03": {
-        "passCondition": "Task quá hạn: bấm [Muộn] → nhập lý do → Xác nhận (BR-03).",
-        "failCondition": "Không có task overdue (không thấy nút Muộn).",
+        "passCondition": "Task quá hạn: bấm [Muộn] → nhập automationtestver{N} → toast thành công (BR-03).",
+        "failCondition": "Không có task overdue / toast lỗi / modal không đóng.",
     },
     "OFF-CFM-04": {
-        "passCondition": "Flow [Đổi cán bộ] mở modal, chọn cán bộ mới và Lưu (BR-04).",
-        "failCondition": "Không thấy nút Đổi cán bộ / không hoàn tất flow.",
+        "passCondition": "Task 1 [Muộn] xong → task 2 [Đổi CB] → chọn cán bộ mới ngẫu nhiên → [Lưu] toast thành công (BR-04).",
+        "failCondition": "Không tạo được checklist overdue / không [Muộn] task 1 / không thấy [Đổi CB] / toast lỗi khi Lưu.",
     },
     "OFF-CFM-05": {
-        "passCondition": "Nút [Hoàn tác] undo xác nhận officer trong cửa sổ 60 phút (BR-02).",
-        "failCondition": "Không thấy nút Hoàn tác — cần officer đã confirm gần đây.",
+        "passCondition": "Task 1 [Muộn] xong → [Hoàn tác] → xác nhận — task về chờ xử lý, trong 60' employee chưa confirm (BR-02).",
+        "failCondition": "Không tạo được checklist / không [Muộn] / không thấy [Hoàn tác] / toast lỗi khi undo.",
     },
     "EMP-LST-01": {
-        "passCondition": "EMPLOYEE thấy ≥1 dòng checklist của bản thân (BR-10).",
-        "failCondition": "Không thấy bảng / 0 dòng checklist của employee đăng nhập.",
+        "passCondition": "ADMIN template → OFF [Tạo checklist] (hôm nay, TK Chuyên Viên) → logout → EMP đăng nhập thấy đúng checklist (BR-10).",
+        "failCondition": "OFF không tạo được checklist / EMP không thấy checklist OFF vừa tạo.",
     },
     "EMP-LST-02": {
-        "passCondition": "Tìm keyword [test] trong phạm vi checklist của EMPLOYEE.",
-        "failCondition": "Không vào được danh sách / không tìm kiếm được.",
+        "passCondition": "EMPLOYEE đăng nhập → search keyword checklist (từ EMP-LST-01 hoặc prep OFF) → có kết quả.",
+        "failCondition": "Không có dữ liệu checklist / không tìm thấy khi search.",
     },
     "EMP-LST-03": {
-        "passCondition": "Danh sách hiển thị badge/tag overdue (task trễ) trên ít nhất 1 dòng.",
-        "failCondition": "Không thấy badge overdue — cần instance có task quá hạn.",
+        "passCondition": "Cuộn bảng đến dòng có chữ «trễ» → chụp minh chứng đúng vị trí badge (EMP/OFF/ADMIN).",
+        "failCondition": "Cuộn hết bảng/phân trang vẫn không thấy chữ «trễ».",
     },
     "EMP-LST-04": {
         "passCondition": "Mở dòng danh sách → chi tiết checklist; URL /hrm/checklist/{id}.",
         "failCondition": "Không có checklist / không mở được chi tiết.",
     },
     "EMP-CFM-01": {
-        "passCondition": "EMPLOYEE bấm [Đúng hạn] → nhập automationtestver{N} → Xác nhận (BR-01, không cần officer trước).",
-        "failCondition": "Không có chi tiết / không thấy nút Đúng hạn.",
+        "passCondition": "OFF tạo checklist (hôm nay) → EMP [Đúng hạn] + automationtestver{N} → toast thành công trước officer (BR-01).",
+        "failCondition": "OFF không tạo checklist / không mở chi tiết / không thấy [Đúng hạn] / toast lỗi.",
     },
     "EMP-CFM-02": {
-        "passCondition": "Task quá hạn: [Muộn] → lý do → Xác nhận (BR-03).",
-        "failCondition": "Không có task overdue.",
+        "passCondition": "OFF tạo checklist quá hạn → EMP [Muộn] + automationtestver{N} → toast thành công (BR-03).",
+        "failCondition": "Không tạo overdue / không thấy [Muộn] / toast lỗi khi xác nhận.",
     },
     "EMP-CFM-03": {
-        "passCondition": "Mở [Nhật ký] từ chi tiết + [Quay lại] về danh sách.",
-        "failCondition": "Không mở Nhật ký / Quay lại thất bại.",
+        "passCondition": "Có marker EMP-CFM-02 hoặc tự [Muộn] → [Nhật ký] có log → đóng → [Quay lại] danh sách.",
+        "failCondition": "Không tạo/xác nhận được / nhật ký trống / Quay lại thất bại.",
     },
 }
 

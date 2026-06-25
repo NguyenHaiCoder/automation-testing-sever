@@ -4,7 +4,8 @@ Chạy các test case đã chọn — một phiên Chromium, lần lượt từn
 
 Dev:
   cd MAIN_AUTOMATION_TEST
-  python run_test_cases.py --cases BR-TPL-01 --visible
+  python run_test_cases.py --cases BR-TPL-01
+  python run_test_cases.py --cases OFF-CFM-03 --headless   # tùy chọn chạy ẩn
 """
 from __future__ import annotations
 
@@ -123,7 +124,12 @@ def main() -> int:
     _configure_stdio()
     parser = argparse.ArgumentParser(description="Run selected checklist test cases")
     parser.add_argument("--cases", required=True, help="Danh sach ID, phan cach bang dau phay")
-    parser.add_argument("--visible", "-v", action="store_true", help="Hien Chromium")
+    parser.add_argument(
+        "--visible",
+        "-v",
+        action="store_true",
+        help="Hien Chromium (mac dinh; giu tuong thich API/FE)",
+    )
     parser.add_argument("--headless", action="store_true", help="Chay an")
     args = parser.parse_args()
 
@@ -132,7 +138,7 @@ def main() -> int:
         print("[ERROR] Thieu case ID")
         return 1
 
-    visible = args.visible and not args.headless
+    visible = not args.headless
     return run_cases(case_ids, visible)
 
 
