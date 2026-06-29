@@ -13,21 +13,44 @@ def run(ctx: WorkflowContext) -> dict:
 
     ctx.login_admin()
     ui.goto_checklist_list(ctx)
+
+    if ui.is_login_page(ctx):
+        return ui.fail_with_shot(
+            ctx,
+            "Van o man login sau khi dang nhap ADMIN — kiem tra accounts.env",
+            "login_blocked",
+        )
+
+    if not ui.table_headers(ctx):
+        return ui.fail_with_shot(ctx, "Khong vao duoc man [Danh sach checklist]", "list_page")
+
     if not ui.filter_thuc_hien_cho_employee(ctx, scope, employee):
-        return ui.fail_with_shot(ctx, f"Khong chon duoc [{scope}] + [{employee}]")
+        return ui.fail_with_shot(
+            ctx,
+            f"Khong chon duoc [{scope}] + [{employee}]",
+            "filter_failed",
+        )
 
     ui.shot(ctx, "filter_result")
     names = ui.extract_employee_names_from_table(ctx)
     if not names:
-        return ui.fail_with_shot(ctx, f"Khong co dong nao sau loc — can nhan vien [{employee}]", "filter_result")
-
-    others = [n for n in names if employee not in n]
-    if others:
         return ui.fail_with_shot(
             ctx,
-            f"Bang con {len(others)} dong nhan vien khac — can chi [{employee}]",
+            f"Khong co dong nao sau loc — can nhan vien [{employee}]",
             "filter_result",
-            otherEmployees=others[:8],
-            totalRows=len(names),
         )
-    return pass_result(f"Bang chi hien thi nhan vien [{employee}]", rows=len(names))
+
+    matches = [n for n in names if employee in n]
+    if not matches:
+        return ui.fail_with_shot(
+            ctx,
+            f"Co {len(names)} dong nhung khong co [{employee}]",
+            "filter_result",
+            samples=names[:8],
+        )
+
+    return pass_result(
+        f"Loc [{scope}] + [{employee}] OK — {len(matches)}/{len(names)} dong khop",
+        rows=len(names),
+        matched=len(matches),
+    )

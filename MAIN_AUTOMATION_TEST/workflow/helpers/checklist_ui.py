@@ -20,17 +20,36 @@ def autotest_text(ctx: WorkflowContext) -> str:
     return f"automationtestver{n}"
 
 
-def login_as(ctx: WorkflowContext, role: str) -> None:
-    ctx.role = role
-    account = None
+def _account_for_role(ctx: WorkflowContext, role: str):
     for acc in ctx.settings.accounts:
         if acc.role == role:
-            account = acc
-            break
+            return acc
+    return None
+
+
+def is_login_page(ctx: WorkflowContext) -> bool:
+    try:
+        inp = ctx.page.locator("#email")
+        return inp.count() > 0 and inp.is_visible()
+    except Exception:
+        return False
+
+
+def login_as(ctx: WorkflowContext, role: str) -> None:
+    account = _account_for_role(ctx, role)
     if not account:
         raise RuntimeError(f"Khong tim thay tai khoan {role}")
-    if not login(ctx.page, ctx.settings, account, ctx):
-        raise RuntimeError(f"Dang nhap {role} that bai")
+
+    if is_login_page(ctx):
+        ctx.role = role
+        if not login(ctx.page, ctx.settings, account, ctx, force=True):
+            raise RuntimeError(f"Dang nhap {role} that bai")
+        return
+
+    if ctx.role == role:
+        return
+
+    switch_role_login(ctx, role)
 
 
 def goto_path(ctx: WorkflowContext, path: str) -> None:
@@ -39,6 +58,8 @@ def goto_path(ctx: WorkflowContext, path: str) -> None:
 
 def goto_checklist_list(ctx: WorkflowContext) -> None:
     goto_path(ctx, "/hrm/checklist")
+    if is_login_page(ctx):
+        login_as(ctx, ctx.role)
     wait_for_data_rows(ctx)
 
 
@@ -122,13 +143,21 @@ def logout_header(ctx: WorkflowContext) -> bool:
 
 
 def switch_role_login(ctx: WorkflowContext, role: str) -> None:
-    """Đăng xuất qua header → đăng nhập role khác."""
-    if not logout_header(ctx):
-        ctx.log("Logout header that bai — fallback clear cookies", "WARN")
+    """Đăng xuất / xóa session → đăng nhập role khác (force form login)."""
+    account = _account_for_role(ctx, role)
+    if not account:
+        raise RuntimeError(f"Khong tim thay tai khoan {role}")
+
+    if not is_login_page(ctx):
+        if not logout_header(ctx):
+            ctx.log("Logout header that bai — fallback clear cookies", "WARN")
         ctx.page.context.clear_cookies()
         ctx.page.goto(ctx.settings.base_url, wait_until="domcontentloaded", timeout=60000)
-        ctx.page.wait_for_timeout(1000)
-    login_as(ctx, role)
+        ctx.page.wait_for_timeout(1500)
+
+    ctx.role = role
+    if not login(ctx.page, ctx.settings, account, ctx, force=True):
+        raise RuntimeError(f"Dang nhap {role} that bai sau switch role")
 
 
 def table_headers(ctx: WorkflowContext) -> list[str]:
@@ -225,6 +254,15 @@ def _click_ant_select_option(ctx: WorkflowContext, option_text: str) -> bool:
 
 
 def _scope_filter_select(ctx: WorkflowContext) -> Locator | None:
+    for label_pat in (r"phạm vi", r"Phạm vi", r"Trạng thái"):
+        item = ctx.page.locator(".ant-form-item").filter(has_text=re.compile(label_pat, re.I)).first
+        if item.count():
+            sel = item.locator(".ant-select").first
+            try:
+                if sel.count() and sel.is_visible():
+                    return sel
+            except Exception:
+                pass
     for sel in ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)").all():
         try:
             if not sel.is_visible():
@@ -237,8 +275,45 @@ def _scope_filter_select(ctx: WorkflowContext) -> Locator | None:
     return None
 
 
+def _employee_filter_select(ctx: WorkflowContext, scope_label: str) -> Locator | None:
+    for label_pat in (r"Nhân viên", r"nhan vien", r"Nhân sự"):
+        item = ctx.page.locator(".ant-form-item").filter(has_text=re.compile(label_pat, re.I)).first
+        if item.count():
+            sel = item.locator(".ant-select").first
+            try:
+                if sel.count() and sel.is_visible():
+                    return sel
+            except Exception:
+                pass
+    for sel in ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)").all():
+        if not sel.is_visible():
+            continue
+        text = sel.inner_text()
+        if any(k in text for k in ("Tất cả", "Cá nhân", scope_label)):
+            continue
+        if "Trạng thái" in text and "Thực hiện" not in text:
+            continue
+        return sel
+    selects = ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)")
+    if selects.count() >= 2:
+        return selects.nth(1)
+    return None
+
+
+def _apply_list_search(ctx: WorkflowContext) -> None:
+    search_btn = ctx.page.locator("button .anticon-search, button:has(.anticon-search)").first
+    if search_btn.count():
+        search_btn.click(timeout=8000)
+        ctx.page.wait_for_timeout(2500)
+    shot(ctx, "after_filter_apply")
+
+
 def filter_thuc_hien_cho_employee(ctx: WorkflowContext, scope_label: str, employee_name: str) -> bool:
     """Dropdown phạm vi → Thực hiện cho NV → chọn nhân viên."""
+    if is_login_page(ctx):
+        ctx.log("Dang o man login — khong loc duoc", "WARN")
+        return False
+
     scope_sel = _scope_filter_select(ctx)
     if scope_sel is None:
         ctx.log("Khong tim thay dropdown pham vi", "WARN")
@@ -252,25 +327,9 @@ def filter_thuc_hien_cho_employee(ctx: WorkflowContext, scope_label: str, employ
         return False
     shot(ctx, "scope_selected")
     ctx.page.keyboard.press("Escape")
-    ctx.page.wait_for_timeout(600)
+    ctx.page.wait_for_timeout(800)
 
-    employee_sel = None
-    for sel in ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)").all():
-        if not sel.is_visible():
-            continue
-        text = sel.inner_text()
-        if any(k in text for k in ("Tất cả", "Cá nhân", scope_label)):
-            continue
-        if "Trạng thái" in text and employee_name not in text:
-            continue
-        employee_sel = sel
-        break
-
-    if employee_sel is None:
-        selects = ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)")
-        if selects.count() >= 2:
-            employee_sel = selects.nth(1)
-
+    employee_sel = _employee_filter_select(ctx, scope_label)
     if employee_sel is None:
         ctx.log("Khong tim thay dropdown nhan vien", "WARN")
         return False
@@ -292,11 +351,8 @@ def filter_thuc_hien_cho_employee(ctx: WorkflowContext, scope_label: str, employ
     except Exception:
         pass
 
-    # Dropdown tu dong loc — chi cho bang cap nhat
-    try:
-        ctx.page.wait_for_load_state("networkidle", timeout=8000)
-    except Exception:
-        ctx.page.wait_for_timeout(2000)
+    _apply_list_search(ctx)
+    ctx.page.wait_for_timeout(1500)
     return True
 
 
