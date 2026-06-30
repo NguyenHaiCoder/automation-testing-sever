@@ -54,6 +54,7 @@ _REGISTRY: dict[str, str] = {
     "OFF-CFM-03": "workflow.OFFICER.off_cfm_03",
     "OFF-CFM-04": "workflow.OFFICER.off_cfm_04",
     "OFF-CFM-05": "workflow.OFFICER.off_cfm_05",
+    "OFF-CFM-06": "workflow.OFFICER.off_cfm_06",
     # EMPLOYEE — Danh sách
     "EMP-LST-01": "workflow.EMPLOYEE.list:emp_lst_01",
     "EMP-LST-02": "workflow.EMPLOYEE.list:emp_lst_02",

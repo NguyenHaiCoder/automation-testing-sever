@@ -111,8 +111,8 @@ CONDITIONS: dict[str, dict[str, str]] = {
         "failCondition": "Không tìm thấy record OFF-LST-01 — cần chạy OFF-LST-01 trước.",
     },
     "OFF-LST-03": {
-        "passCondition": "OFFICER lọc khoảng ngày 01/06/2026–30/06/2026 → có dòng trong phạm vi quyền (gồm checklist OFF-LST-01 nếu đã chạy).",
-        "failCondition": "Không lọc được / 0 dòng sau lọc / mất record OFF-LST-01 trong khoảng ngày.",
+        "passCondition": "OFFICER lọc 26/06/2026–29/06/2026 → mọi dòng có Từ ngày / Đến ngày nằm trọn trong khoảng (boundary pass).",
+        "failCondition": "Có ≥1 dòng vượt biên — vd. Đến ngày 30/06/2026 > 29/06/2026 khi lọc đến 29/06 (BUG BE overlap).",
     },
     "OFF-LST-04": {
         "passCondition": "Nút làm mới (reload) tải lại danh sách checklist.",
@@ -137,6 +137,10 @@ CONDITIONS: dict[str, dict[str, str]] = {
     "OFF-CFM-05": {
         "passCondition": "Task 1 [Muộn] xong → [Hoàn tác] → xác nhận — task về chờ xử lý, trong 60' employee chưa confirm (BR-02).",
         "failCondition": "Không tạo được checklist / không [Muộn] / không thấy [Hoàn tác] / toast lỗi khi undo.",
+    },
+    "OFF-CFM-06": {
+        "passCondition": "OFFICER lọc [Quá hạn] → có dòng có chữ «trễ» hoặc tiến độ chưa xong (0/2, 1/3, 2/3…).",
+        "failCondition": "Không lọc được [Quá hạn] / 0 dòng / có dòng nhưng không thấy trễ hoặc tiến độ chưa hoàn thành.",
     },
     "EMP-LST-01": {
         "passCondition": "ADMIN template → OFF [Tạo checklist] (hôm nay, TK Chuyên Viên) → logout → EMP đăng nhập thấy đúng checklist (BR-10).",

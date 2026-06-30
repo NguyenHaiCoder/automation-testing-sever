@@ -40,16 +40,19 @@ def login_as(ctx: WorkflowContext, role: str) -> None:
     if not account:
         raise RuntimeError(f"Khong tim thay tai khoan {role}")
 
+    url = (ctx.page.url or "").strip()
+    if url in ("", "about:blank"):
+        ctx.page.goto(ctx.settings.base_url, wait_until="domcontentloaded", timeout=60000)
+        ctx.page.wait_for_timeout(1000)
+
     if is_login_page(ctx):
         ctx.role = role
         if not login(ctx.page, ctx.settings, account, ctx, force=True):
             raise RuntimeError(f"Dang nhap {role} that bai")
         return
 
-    if ctx.role == role:
-        return
-
-    switch_role_login(ctx, role)
+    if ctx.role != role:
+        switch_role_login(ctx, role)
 
 
 def goto_path(ctx: WorkflowContext, path: str) -> None:
@@ -60,6 +63,7 @@ def goto_checklist_list(ctx: WorkflowContext) -> None:
     goto_path(ctx, "/hrm/checklist")
     if is_login_page(ctx):
         login_as(ctx, ctx.role)
+        goto_path(ctx, "/hrm/checklist")
     wait_for_data_rows(ctx)
 
 
@@ -227,19 +231,51 @@ def click_refresh(ctx: WorkflowContext) -> None:
 
 
 def open_status_dropdown(ctx: WorkflowContext) -> None:
-    selects = ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)")
-    for sel in selects.all()[:4]:
+    sel = _status_filter_select(ctx)
+    if sel is None:
+        return
+    sel.click(timeout=5000)
+    ctx.page.wait_for_timeout(800)
+    shot(ctx, "status_dropdown_open")
+
+
+def _status_filter_select(ctx: WorkflowContext) -> Locator | None:
+    status_markers = ("Quá hạn", "Chờ thực hiện", "Đang thực hiện", "Hoàn thành", "Đã hủy", "Trạng thái")
+    for sel in ctx.page.locator(".ant-select:not(.ant-pagination-options-size-changer)").all():
         try:
             if not sel.is_visible():
                 continue
             text = sel.inner_text()
-            if "Trạng thái" in text or "Tất cả" in text:
-                sel.click(timeout=5000)
-                ctx.page.wait_for_timeout(800)
-                shot(ctx, "status_dropdown_open")
-                return
+            if any(m in text for m in status_markers):
+                return sel
         except Exception:
             continue
+    return None
+
+
+def filter_list_status(ctx: WorkflowContext, status_label: str) -> bool:
+    """Dropdown [Trạng thái] → chọn giá trị → Tìm kiếm."""
+    if is_login_page(ctx):
+        ctx.log("Dang o man login — khong loc trang thai duoc", "WARN")
+        return False
+
+    sel = _status_filter_select(ctx)
+    if sel is None:
+        ctx.log("Khong tim thay dropdown [Trang thai]", "WARN")
+        return False
+
+    sel.click(timeout=8000)
+    ctx.page.wait_for_timeout(600)
+    shot(ctx, "status_dropdown_open")
+    if not _click_ant_select_option(ctx, status_label):
+        ctx.log(f"Khong chon duoc [{status_label}]", "WARN")
+        return False
+    shot(ctx, "status_selected")
+    ctx.page.keyboard.press("Escape")
+    ctx.page.wait_for_timeout(400)
+    _apply_list_search(ctx)
+    ctx.page.wait_for_timeout(1500)
+    return True
 
 
 def _click_ant_select_option(ctx: WorkflowContext, option_text: str) -> bool:
@@ -507,6 +543,18 @@ def find_error_toast(ctx: WorkflowContext) -> str | None:
     return None
 
 
+def dates_within_filter_range(
+    from_d: date | None,
+    to_d: date | None,
+    filter_start: date,
+    filter_end: date,
+) -> bool:
+    """Checklist nằm trọn trong khoảng lọc — cả Từ ngày và Đến ngày đều trong [filter_start, filter_end]."""
+    if not from_d or not to_d:
+        return False
+    return filter_start <= from_d <= filter_end and filter_start <= to_d <= filter_end
+
+
 def parse_vn_date(text: str) -> date | None:
     text = (text or "").strip()
     m = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", text)
@@ -625,6 +673,111 @@ def employee_two_line_format(ctx: WorkflowContext) -> bool:
 
 def _row_has_tre_label(text: str) -> bool:
     return "trễ" in text or bool(re.search(r"\d+\s*tr[ệe]", text, re.I))
+
+
+def _row_has_incomplete_progress(text: str) -> bool:
+    """Tiến độ done/total với done < total (vd. 0/2, 1/3, 2/3) — chưa hoàn thành."""
+    for m in re.finditer(r"(\d+)/(\d+)", text):
+        done, total = int(m.group(1)), int(m.group(2))
+        if total > 0 and done < total:
+            return True
+    return False
+
+
+def row_overdue_evidence_kind(text: str) -> str | None:
+    """«trễ» hoặc tiến độ chưa xong — dấu hiệu checklist quá hạn trên danh sách."""
+    if _row_has_tre_label(text):
+        return "tre"
+    if _row_has_incomplete_progress(text):
+        return "progress"
+    return None
+
+
+def _find_overdue_evidence_row(ctx: WorkflowContext) -> tuple[Locator | None, str]:
+    for row in data_table_rows(ctx):
+        try:
+            kind = row_overdue_evidence_kind(row.inner_text())
+            if kind:
+                return row, kind
+        except Exception:
+            continue
+    return None, ""
+
+
+def _scroll_table_for_overdue_row(ctx: WorkflowContext) -> tuple[Locator | None, str]:
+    body = ctx.page.locator(".ant-table-body").first
+    if not body.count():
+        return None, ""
+    try:
+        metrics = body.evaluate(
+            """el => ({
+                scrollHeight: el.scrollHeight,
+                clientHeight: el.clientHeight,
+            })"""
+        )
+        scroll_height = int(metrics.get("scrollHeight") or 0)
+        client_height = int(metrics.get("clientHeight") or 0)
+        if scroll_height <= client_height + 4:
+            return _find_overdue_evidence_row(ctx)
+
+        step = max(client_height // 2, 220)
+        pos = 0
+        while pos <= scroll_height:
+            body.evaluate("(el, y) => { el.scrollTop = y; }", pos)
+            ctx.page.wait_for_timeout(350)
+            row, kind = _find_overdue_evidence_row(ctx)
+            if row:
+                return row, kind
+            pos += step
+
+        body.evaluate("(el) => { el.scrollTop = el.scrollHeight; }")
+        ctx.page.wait_for_timeout(400)
+        return _find_overdue_evidence_row(ctx)
+    except Exception:
+        return None, ""
+
+
+def scroll_to_overdue_list_row(ctx: WorkflowContext) -> tuple[bool, str]:
+    """
+    Cuộn bảng / phân trang đến dòng có «trễ» hoặc tiến độ chưa hoàn thành (done < total).
+    Trả về (found, kind) với kind ∈ {tre, progress, ""}.
+    """
+    row, kind = _find_overdue_evidence_row(ctx)
+    if row:
+        row.scroll_into_view_if_needed()
+        ctx.page.wait_for_timeout(400)
+        return True, kind
+
+    row, kind = _scroll_table_for_overdue_row(ctx)
+    if row:
+        row.scroll_into_view_if_needed()
+        ctx.page.wait_for_timeout(400)
+        return True, kind
+
+    for _ in range(25):
+        next_btn = ctx.page.locator(".ant-pagination-next:not(.ant-pagination-disabled)").first
+        if not next_btn.count():
+            break
+        try:
+            disabled = "ant-pagination-disabled" in (next_btn.get_attribute("class") or "")
+            if disabled or not next_btn.is_enabled():
+                break
+        except Exception:
+            break
+        next_btn.click(timeout=5000)
+        ctx.page.wait_for_timeout(1200)
+        row, kind = _find_overdue_evidence_row(ctx)
+        if row:
+            row.scroll_into_view_if_needed()
+            ctx.page.wait_for_timeout(400)
+            return True, kind
+        row, kind = _scroll_table_for_overdue_row(ctx)
+        if row:
+            row.scroll_into_view_if_needed()
+            ctx.page.wait_for_timeout(400)
+            return True, kind
+
+    return False, ""
 
 
 def _find_tre_row(ctx: WorkflowContext) -> Locator | None:

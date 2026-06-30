@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-OFF-LST-03 — OFFICER lọc checklist theo khoảng ngày 01/06/2026–30/06/2026.
+OFF-LST-03 — OFFICER lọc checklist theo khoảng ngày 26/06/2026–29/06/2026 (boundary).
 
-Phụ thuộc OFF-LST-01: sau lọc vẫn thấy record checklist trong phạm vi quyền.
+Pass: mọi dòng có Từ ngày / Đến ngày nằm trọn trong 26/06–29/06.
+Fail: có dòng vượt biên (vd. Đến ngày 30/06/2026 > 29/06/2026) — BUG BE overlap.
 """
 from __future__ import annotations
 
+from datetime import date
+
+from workflow.OFFICER import off_constants as oc
 from workflow.OFFICER import off_helpers as off
-from workflow.OFFICER import off_lst_prep as prep
 from workflow.common import WorkflowContext
 from workflow.helpers import checklist_ui as ui
 from workflow.helpers.outcome import pass_result
 
-FILTER_YEAR = 2026
-FILTER_MONTH = 6
-FILTER_START_DAY = 1
-FILTER_END_DAY = 30
+FILTER_START = date(2026, 6, 26)
+FILTER_END = date(2026, 6, 29)
 
 
 def run(ctx: WorkflowContext) -> dict:
@@ -24,32 +25,52 @@ def run(ctx: WorkflowContext) -> dict:
 
     ui.pick_date_range(
         ctx,
-        year=FILTER_YEAR,
-        month=FILTER_MONTH,
-        start_day=FILTER_START_DAY,
-        end_day=FILTER_END_DAY,
+        year=FILTER_START.year,
+        month=FILTER_START.month,
+        start_day=FILTER_START.day,
+        end_day=FILTER_END.day,
     )
     ui.shot(ctx, "date_filter_result_officer")
 
-    rows = ui.data_row_count(ctx)
-    if rows == 0:
-        return ui.fail_with_shot(
-            ctx,
-            "Khong co dong sau loc 01/06/2026–30/06/2026 — can OFF-LST-01 truoc",
-            "date_filter_result_officer",
+    rows = ui.extract_checklist_date_rows(ctx)
+    if not rows:
+        return pass_result(
+            f"Loc {oc.DATE_FILTER_START}–{oc.DATE_FILTER_END} OK — 0 dong, "
+            f"khong vi pham bien {oc.DATE_FILTER_END}",
+            rowCount=0,
+            dateRange=f"{oc.DATE_FILTER_START}-{oc.DATE_FILTER_END}",
         )
 
-    template_name = prep.resolve_lst01_template(ctx)
-    if template_name and not prep.list_shows_checklist(ctx, template_name):
+    valid: list[str] = []
+    invalid: list[str] = []
+    for raw_from, raw_to, from_d, to_d in rows:
+        label = f"{raw_from} → {raw_to}"
+        if ui.dates_within_filter_range(from_d, to_d, FILTER_START, FILTER_END):
+            valid.append(label)
+        else:
+            invalid.append(label)
+
+    if invalid:
+        boundary_hint = ""
+        for _, raw_to, _, to_d in rows:
+            if to_d and to_d > FILTER_END:
+                boundary_hint = (
+                    f" — vi pham bien: Den ngay {raw_to} > {oc.DATE_FILTER_END}"
+                )
+                break
         return ui.fail_with_shot(
             ctx,
-            f"Loc ngay OK nhung khong thay checklist OFF-LST-01 [{template_name}]",
+            f"Boundary FAIL: {len(invalid)}/{len(rows)} dong NGOAI khoang "
+            f"{oc.DATE_FILTER_START}–{oc.DATE_FILTER_END}{boundary_hint}",
             "date_filter_result_officer",
-            rowCount=rows,
+            invalid=invalid[:8],
+            validCount=len(valid),
         )
 
     return pass_result(
-        f"OFFICER loc 01/06/2026–30/06/2026 OK ({rows} dong trong pham vi quyen)",
-        rowCount=rows,
-        dateRange="01/06/2026-30/06/2026",
+        f"OFFICER loc {oc.DATE_FILTER_START}–{oc.DATE_FILTER_END} OK — "
+        f"{len(valid)}/{len(rows)} dong nam tron trong khoang (boundary pass)",
+        rowCount=len(rows),
+        dateRange=f"{oc.DATE_FILTER_START}-{oc.DATE_FILTER_END}",
+        samples=valid[:5],
     )

@@ -435,14 +435,18 @@ def build_cases() -> list[dict]:
     c.append(case(
         "OFF-LST-03",
         "[OFFICER] Danh sách checklist",
-        "OFFICER lọc checklist theo khoảng ngày",
+        "OFFICER lọc checklist theo khoảng ngày 26/06–29/06 (boundary)",
         "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n"
-        "2. Truy cập màn hình [Danh sách checklist]\n"
-        "3. Chọn khoảng ngày trên lịch\n"
-        "4. Nhấn button [Tìm kiếm]",
-        "1. Danh sách lọc theo FromDate–ToDate\n"
-        "2. Vẫn trong phạm vi quyền OFFICER",
-        "[OFF-LST-01]",
+        "2. Chọn menu [HRM]\n"
+        "3. Chọn submenu [Checklist]\n"
+        "4. Truy cập màn hình [Danh sách checklist]\n"
+        "5. Chọn khoảng ngày [26/06/2026] đến [29/06/2026] trên lịch\n"
+        "6. Nhấn button [Tìm kiếm]",
+        "1. Mọi dòng có Từ ngày / Đến ngày nằm trọn trong khoảng 26/06/2026–29/06/2026\n"
+        "2. FAIL nếu có dòng có Đến ngày > 29/06/2026 (vd. hiện 30/06/2026 — vượt biên, BUG BE)\n"
+        "3. Vẫn trong phạm vi quyền OFFICER",
+        "",
+        testData="Khoảng ngày boundary: 26/06/2026 – 29/06/2026",
     ))
     c.append(case(
         "OFF-LST-04",
@@ -535,6 +539,23 @@ def build_cases() -> list[dict]:
         "3. Sau employee confirm → không undo được",
         "[OFF-CFM-02]\nEmployeeStatus = 0, trong 60 phút",
         note="BR-02",
+    ))
+    c.append(case(
+        "OFF-CFM-06",
+        "[OFFICER] Lọc quá hạn — danh sách checklist",
+        "OFFICER lọc trạng thái [Quá hạn] và thấy checklist trễ / chưa hoàn thành",
+        "1. Đăng nhập hệ thống bằng tài khoản OFFICER\n"
+        "2. Chọn menu [HRM]\n"
+        "3. Chọn submenu [Checklist]\n"
+        "4. Truy cập màn hình [Danh sách checklist]\n"
+        "5. Chọn dropdown [Trạng thái] là [Quá hạn]\n"
+        "6. Nhấn button [Tìm kiếm]\n"
+        "7. Quan sát cột [Trạng thái] / [Tiến độ] trên bảng",
+        "1. Danh sách có ít nhất 1 dòng sau lọc [Quá hạn]\n"
+        "2. Dòng hiển thị chữ «trễ» HOẶC tiến độ chưa hoàn thành (vd. 0/2, 1/3, 2/3)\n"
+        "3. Trong phạm vi quyền OFFICER",
+        "",
+        testData="Trạng thái lọc: Quá hạn",
     ))
 
     # ── EMPLOYEE — Danh sách ─────────────────────────────────────────────
